@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		table,
+		td, th {
+			border:1px solid #ccc;
+				}
+		td,
+		th {
+			padding: 10px 20px;
+		}
+		td:last-child{
+			width: 200px;
+		}		
+	</style>
+</head>
+<body>
+	
+	<table>
+		<caption><h1>수습 국원 지원 양식</h1></caption>
+		<!-- rowspan으로 1,2,3행을 모두 묶어줘서 연락처 까지는2열로 나옴 -->
+		<tr>
+			<th rowspan="3">개인정보</th>
+			<th>이름</th>
+			<td></td>
+					
+		</tr>
+		<tr>
+			<th>학과/학번</th>
+			<th></th>
+
+		</tr>
+		
+		<tr><th>연락처</th>
+			<td></td></tr>
+		
+ 		<!--rowspan이 해당 안되기 때문에 지원분야는 다시 열로 내려옴  -->
+		<tr>
+			<th>지원 분야</th>
+			<td colspan="2"></td>
+			
+
+		</tr>
+		
+		
+	</table>
+</body>
+</html>
