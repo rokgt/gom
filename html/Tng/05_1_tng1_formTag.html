@@ -20,14 +20,14 @@
 				    <input type="email" name="email" id="email">
 				</li>
 				<li>
-					<label for="PW">비밀번호</label>
+					<label for="pw">비밀번호</label>
 					<input type="password" name="pw" id="pw" placeholder="문자와 숫자,특수 기호 포함" required>
 				</li>
 				<li>
-					<label for="password">비밀번호확인</label>
+					<label for="pwchk">비밀번호확인</label>
 					<input type="password" name="pwchk" id="pwchk" required></li>	
 				<li>
-					<label for="whyenter">가입 경로</label>
+					<label for="way">가입 경로</label>
 					<select name="whyenter" id="way">
 					<option value="0">블로그</option>
 					<option value="1">지인소개</option>
@@ -38,10 +38,12 @@
 				</ul></fieldset>
 		<fieldset>
 			<legend>이벤트와 새로운 소식</legend>
-			<label for="radio">메일수신</label>
-			<input type="radio" name="savemail" id="savemail">
-			<label for="radio">메일수신안함
-			<input type="radio" name="nosavemail" id="savemail"checked></label>		
+			<input type="radio" name="savemail" id="savemail"value="1">
+			<label for="savemail">메일수신</label>
+			
+			<input type="radio" name="savemail" id="nosavemail"value="0" checked>	
+			<label for="nosavemail">메일수신안함</label>
+				
 		</fieldset>
 		<button type="submit">가입하기</button>
 		<button type="reset">취소</button>
