@@ -1,0 +1,25 @@
+
+.container {
+	border: 1px solid #000;
+	
+}
+.chk {
+	background-color: black;
+	color: white;
+}
+
+h1 {
+	color: red;
+}
+.noon {
+	color: blue;
+}
+.que {
+	font-size: 0.7em;
+}
+h1,p {
+	text-align: center;
+}
+p {
+	font-weight: 900;
+}

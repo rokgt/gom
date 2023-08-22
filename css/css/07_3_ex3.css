@@ -1,0 +1,16 @@
+.tran {
+	text-transform: capitalize;
+	text-transform:uppercase;
+	text-transform:lowercase;
+}
+.spacing {
+	letter-spacing: 1.5em; 	/* 글자간 간격 */
+	
+}
+.w_spacing {
+	word-spacing: 10px; 	/* 단어간 간격 (예) 묘한 아재*/
+
+}
+.shadow {
+	text-shadow: 5px 5px 5px rgb(64, 55, 143);
+}
