@@ -1,0 +1,67 @@
+main, section, article {
+	padding: 20px;
+}
+main {
+	background-color: aquamarine;
+}
+section {
+
+		background-color: rgb(171, 212, 21);
+	 position: relative;
+}
+article {
+	background-color: rgb(119, 22, 209);
+	height: 1000px;
+}
+.div_static {
+	background-color: rgb(97, 39, 39);
+	position: static;
+}
+.div_relative {
+	background-color: rgb(116, 93, 177);
+	position: relative;
+	left: -30px;
+	
+}
+.div_absolute { 
+	/* 부모의 relative를 기준으로 한다(없을경우 최상위 개체에 붙는다
+	html이 relative를 
+	가지므로 html을 기준으로 한다 */
+	background-color: rgb(200, 218, 38);
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.div_fixed {
+	background-color: rgb(233, 101, 13);
+	position: fixed;
+	right: 10%;
+	bottom: 10%;
+
+}
+.div_sticky {
+	background-color: rgb(248, 6, 6);
+	position: sticky;
+	top: 0;
+}
+.zindex1 {
+	background-color: aliceblue;
+	width: 100px;
+	position: absolute;
+	z-index: 3;
+}
+.zindex2 {
+	background-color: rgb(168, 20, 89);
+	position: absolute;
+	width: 200px;
+	z-index: 2;
+	
+}
+.zindex3 {
+	background-color: rgb(46, 143, 62);
+	
+	width: 300px;
+	z-index: 1;
+	position: absolute;
+	
+}

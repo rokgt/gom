@@ -1,0 +1,15 @@
+.name {
+	border: 1px solid #000;
+	
+
+}
+table {
+	border: 1px solid #000;
+	border-collapse: collapse;
+	width:500px;
+	height:300px;
+}
+td,th {
+	border: 1px solid #000;
+		
+}

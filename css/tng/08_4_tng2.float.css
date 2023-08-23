@@ -1,0 +1,41 @@
+header,main,footer {
+	width: 600px;
+}
+header {
+	background-color: aqua;
+	height: 50px;
+	
+}
+.side1 {
+	background-color: antiquewhite;
+	height: 500px;
+	float: left;
+	width: 100px;
+	
+
+
+}
+article {
+	background-color: cornflowerblue;
+	height: 500px;
+	float: left;
+	width: 400px;
+	
+
+}
+.side2 {
+	background-color: rgb(245, 6, 6);
+	float: left;
+	height: 500px;
+	width: 100px;
+	
+	
+	
+}
+footer {
+	background-color: chartreuse;
+	height: 30px;
+	clear: both;
+	
+
+}
