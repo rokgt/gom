@@ -1,0 +1,20 @@
+.div-img {
+	border: 1px solid #000;
+
+	background-image: url('../img/gom.png');
+
+	width: 500px;
+	
+	height: 500px;
+	
+	background-size: 500px;
+	
+	background-repeat: no-repeat;
+	
+	background-position: top 10% left 30%;
+	
+}
+body {
+	background-image: url('../img/images.jpg');
+	background-size: cover;
+}

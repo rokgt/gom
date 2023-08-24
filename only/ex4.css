@@ -1,0 +1,30 @@
+header,main,footer {
+	width: 700px;
+}
+header {
+	height: 70px;
+	background-color: darkgoldenrod;
+}
+.side1 {
+	background-color: darkorchid;
+	float: left;
+	height: 500px;
+	width: 150px;
+}
+.side2 {
+	background-color: cornflowerblue;
+	float: left;
+	height: 500px;
+	width: 150px;
+}
+article {
+	float: left;
+	background-color: brown;
+	height: 500px;
+	width: 400px;
+}
+footer {
+	background-color: dimgray;
+	clear: both;
+	height: 40px;
+}

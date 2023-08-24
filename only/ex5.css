@@ -1,0 +1,16 @@
+div {
+	border: 1px solid #000;
+	width: 700px;
+}
+.relative-1 {
+	border: 1px solid #000;
+
+	position: relative;
+}
+.relative-2 {
+	border: 1px solid #000;
+	
+	left: 100px;
+	top: -50px;
+	position: relative;
+}

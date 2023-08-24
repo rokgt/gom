@@ -1,0 +1,26 @@
+div {
+	width: 700px;
+	margin: 20px auto;
+
+	
+
+}
+.main{
+	float: left;
+	border: 1px solid #000;
+	width: 300px;
+	height: 250px;
+	margin: 10px;
+	padding: 10px;
+	background-image: url(../img/images.jpg);}
+
+
+footer {
+	background-color:#000;
+	color:white ;
+	clear: both;
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+	
+	}
