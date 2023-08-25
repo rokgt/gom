@@ -1,0 +1,39 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.nav_ul {
+	list-style: none;	
+	width: 600px;
+	height: 40px;
+	margin: 50px auto;
+	padding: 0;
+	background-color: grey;
+	box-shadow: #000 1px 10px 10px 5px;
+		
+}
+li {
+	float: left;
+	width: 100px;
+	height: 40px;
+	box-sizing: border-box;
+	text-align: center;
+	line-height: 40px;	
+	border-right: 1px solid #000;	
+	
+}
+.nav_ul li:not(:last-child) a:hover{ 
+	background-color: black;
+	
+}	
+.nav_ul li:last-child a:hover {
+	background-color: crimson;	
+	border-right: none;
+}
+a{
+	display:block;
+	text-decoration-line: none;
+}	
+ 
+
