@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    background-size: cover;
+    border: 1px solid #000;
+    width: 200px;
+    height: 200px;
+    box-sizing: border-box;  
+}
+img:first-child{
+    border: 2px solid red;
+}

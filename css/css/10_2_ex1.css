@@ -5,7 +5,7 @@
 	color: blue;
 }/* 속성값과 일치하는 요소 */
 [class*=att_class] {
-	color: brown;
+	color: rgb(42, 165, 149);
 }/* 설정한 일정속성값이 일치 */
 [class~=att_class] {
 	color: chocolate;
