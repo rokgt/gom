@@ -1,1 +1,19 @@
+<<<<<<< HEAD
 
+=======
+*{
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    background-size: cover;
+    border: 1px solid #000;
+    width: 200px;
+    height: 200px;
+    box-sizing: border-box;  
+}
+img:first-child{
+    border: 2px solid red;
+}
+>>>>>>> c18a272d42fcc690b596494ffde92d9e921fc0d0
