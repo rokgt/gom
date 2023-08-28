@@ -1,0 +1,18 @@
+.container {
+	background-color: gray;
+	margin: 10px;
+	width: 60vw;
+	height: 60vh;
+	display: flex;
+	/* flex-direction: row;
+	flex-wrap: wrap; */
+	flex-flow: row wrap;
+	/* justify-content: space-between; */
+	align-items: flex-end;
+}/* 플렉스를 줄때는 부모에 준다 */
+.item {
+	width: 15vw;
+	height: 15vh;
+	background-color: skyblue;
+	border: 1px solid #000;
+}

@@ -29,11 +29,15 @@ li {
 }	
 .nav_ul li:last-child a:hover {
 	background-color: crimson;	
+	
+}
+.nav_ul li:last-child {
 	border-right: none;
 }
 a{
 	display:block;
 	text-decoration-line: none;
+	
 }	
  
 

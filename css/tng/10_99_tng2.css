@@ -1,0 +1,44 @@
+div{
+	width: 700px;
+	margin: 0 auto;
+}
+fieldset{
+	background-image: url('../img/ZZ.png');
+	background-size:cover;	
+}
+legend {
+	color: rgb(236, 114, 135);
+	font-size: 60px;
+}
+
+ul {
+	list-style: none;
+	
+}
+#name,#year,#want{
+	background: none;
+}
+li::before {
+	content:'*';
+	color: rgb(255, 0, 0);	
+}
+#year:focus,#name:focus,#want:focus{
+	outline: none;
+	border: 2px solid rgb(255, 0, 0);
+}
+
+input:checked + label {
+	color: rgb(255, 0, 0);
+}
+.none:hover .hidden{
+	background-color: black;
+	color: aliceblue;
+	display: inline;
+	
+}
+.hidden {
+	display: none;
+}
+textarea {
+	vertical-align:top;
+}
