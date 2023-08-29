@@ -1,0 +1,36 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+legend{
+    color: palevioletred;
+    font-size: 50px;
+}
+.star::before{
+    content: "*";
+    color: red;
+}
+:focus{
+    outline: none;
+    border: 2px solid red;
+}
+input:checked +label{
+    color: red;
+}
+textarea{
+    vertical-align: top;
+}
+#send{
+    position: relative;
+}
+#send:hover::after{
+    content: "내용을 다시 한번 확인해주세요";
+    background-color: black;
+    color: antiquewhite;
+    position: absolute;
+    width: 300px;
+    font-size: 20px;
+    
+    left: 60px;
+
+}

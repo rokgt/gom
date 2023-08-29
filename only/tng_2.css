@@ -1,0 +1,18 @@
+.container{
+    width: 600px;
+    height: 600px;
+    border: 1px solid #000;
+    background-color: rgb(30, 210, 54);
+}
+.real,.nise{
+    border: 1px solid #000;
+    width: 200px;
+    height: 200px;
+    float: left;
+    box-sizing: border-box;
+    background-color: brown;
+}
+.nise{
+    background: transparent;
+    border: none;
+}

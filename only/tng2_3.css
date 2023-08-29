@@ -1,0 +1,21 @@
+.container{
+    background-color: grey;
+    display: flex;
+    flex-flow:row wrap;
+    width: 600px;
+    height: 600px;
+    align-content: space-between;
+    margin: 10px;
+  
+}
+.box{
+    border: 1px solid #000;
+    width: 200px;
+    height: 200px;
+    background-color: aqua;
+    box-sizing: border-box;
+}
+.center {
+    align-self: flex-end;
+   
+}

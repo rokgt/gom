@@ -1,0 +1,31 @@
+.container{
+    width: 600px;
+    height: 600px;
+    background-color: crimson;
+    margin: 10px;
+}
+.box3{
+    width:600px;
+    height:200px;
+}
+.box{
+    background-color: dimgray;
+    border: 1px solid#000;
+    width: 200px;
+    height: 200px;
+    box-sizing: border-box;
+    float: left;
+}
+
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.center{
+    float: none;
+    margin: 0 auto;
+    
+}
+
