@@ -1,0 +1,52 @@
+/* .container {
+	background-color: gray;
+	width: 450px;
+	height: 450px;
+	margin: 10px;
+	
+	
+}
+.item {
+	border:  1px solid #000;
+	width: 150px;
+	height: 150px;
+	background-color: aqua;
+	float: left;
+	
+	box-sizing: border-box;
+}
+.container :nth-child(2){
+ background: none;
+ border: none;
+
+}
+.container :nth-child(4){
+	background: none;
+	border: none;
+	clear: both;
+}
+.container :nth-child(6){
+	background: none;
+	border: none;
+}
+.container :nth-child(9){
+	background: none;
+	border: none;
+	
+}
+  */
+  .container {
+	background-color: gray;
+	width: 450px;
+	height: 450px;
+	margin: 10px;
+  }
+  .item {
+	border:  1px solid #000;
+	width: 150px;
+	height: 150px;
+	background-color: aqua;
+	float: left;
+	
+	box-sizing: border-box;
+  }
