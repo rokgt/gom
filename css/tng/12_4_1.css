@@ -41,6 +41,10 @@
 	height: 450px;
 	margin: 10px;
   }
+  .row{
+	width: 450px;
+	height: 150px;
+  }
   .item {
 	border:  1px solid #000;
 	width: 150px;
@@ -50,3 +54,13 @@
 	
 	box-sizing: border-box;
   }
+.left {
+	float: left;
+}
+.right{
+	float: right;
+}
+.center {
+	margin: 0 auto;
+	float: none;
+}
