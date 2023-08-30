@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbit&family=Sedgwick+Ave+Display&display=swap');
+body{
+	font-family: 'Orbit', sans-serif;
+font-family: 'Sedgwick Ave Display', cursive;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+
+header{
+	color: #ffffff;
+	background-image: url(../img/img_1.jpg);
+	background-size:cover;
+	display: grid;
+	grid-template-columns: repeat(auto-fit,minmax(280px, 1fr)); 
+	width: 100%;
+	padding: 20px;	
+}
+
+footer{
+	color: #ffffff;
+	font-size: 0.75rem;
+	background-color: #333;
+	text-align: center;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}	
+a{
+	background-color: chocolate;
+	color: #ffffff;
+	font-size: 1.5rem;
+	text-align: center;
+	border-radius: 5px;
+	text-decoration: none;
+
+}
+a:hover {
+	opacity: 0.6;
+	transition: 0.5s;	
+}
+.float-left{
+	width: 50%;
+	font-size: 4rem;
+	
+	align-self:center;
+}
+p {
+	font-size: 1.5rem;
+}
+main{
+	width: 100%;
+	margin: 10px;
+	padding: 10px;
+	display:flex;
+	flex-wrap: wrap;	
+	
+}
+article{
+	border: 1px solid #E2E2E2;
+	border-radius: 5px;
+	padding: 10px;		
+	margin: 10px;
+	width: 250px;
+}
+img{
+	display: block;
+	text-align: center;
+	width: 100%;
+	
+}
+figure{
+	position: relative;	
+}
+figcaption{
+	background-color: black;
+	opacity: 0.8;
+	color: white;
+	position: absolute;
+	padding: 1em;
+	left: 0;
+  	right: 0;
+  	bottom: 0;	
+}
+
