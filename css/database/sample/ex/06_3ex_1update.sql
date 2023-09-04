@@ -1,0 +1,3 @@
+-- update의 기본구조
+-- update 테이블명
+-- set

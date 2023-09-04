@@ -17,7 +17,7 @@ SELECT * FROM employees WHERE birth_date>= 19600101;
 SELECT *
 FROM employees 
 WHERE birth_date <= 19700101 
- AND birth_date >= 19650101; 
+ and birth_date >= 19650101; 
 
 SELECT * 
 FROM employees
@@ -98,15 +98,20 @@ SELECT sum(salary) FROM salaries;
 
 --  현재 받고있는 급여만 조회해주세요.
 
-SELECT *FROM salaries WHERE to_date >= 99990101; 
+SELECT *FROM salaries WHERE to_date >= 99990101;
+ 
 -- sum(컬럼명): 합계를 구합니다.
 SELECT sum(salary) FROM salaries WHERE to_date >= 99990101;
+
 -- max(컬럼명): 최대값을  구합니다.
 SELECT max(salary) FROM salaries WHERE to_date >= 99990101;
+
 -- min(컬럼명): 최소값을 구합니다.
 SELECT min(salary) FROM salaries WHERE to_date >= 99990101;
+
 -- avg(컬럼명): 평균을 구합니다.
 SELECT avg(salary) FROM salaries WHERE to_date >= 99990101;
+
 -- count(컬럼명): 개수를 구합니다.
 SELECT COUNT(*) FROM employees;
 
@@ -135,7 +140,7 @@ FROM employees;
 
 -- 여자사원의 사번,생일, 풀네임을 출력해주세요.
 
-SELECT emp_no,birth_date, CONCAT(first_name, ' ',last_name) AS full_name
+SELECT emp_no,birth_date, CONCAT(first_name, ' ' ,last_name) AS full_name
 FROM employees 
 WHERE gender='F' ORDER BY full_name;
 
@@ -220,3 +225,73 @@ FROM (
 SELECT*
 FROM employees
 WHERE gender = 'm')AS emp;
+
+-- 직책 테이블의 모든 정보를 조회해주세요.
+
+SELECT *
+FROM titles;
+
+-- 급여가 60,000이하인 사원의 사번을 조회해 주세요.
+
+SELECT emp_no
+FROM salaries
+WHERE salary<=60000;
+
+-- 급여가 60,000에서 70,000인 사원의 사번을 조회해주세요.
+
+SELECT emp_no
+FROM salaries
+WHERE salary >=60000
+and	salary <=70000;
+
+-- 사원번호가 10001,10005인 사원의 모든 정보를 조회해주세요.
+
+SELECT *
+FROM employees
+WHERE emp_no IN (10001,10005);
+
+-- 직급명에 "Engineer"가 포함된 사원의 사번과 직급을 조회해 주세요.
+
+SELECT emp_no,title
+FROM titles
+WHERE title LIKE('%engineer%');
+-- 사원 이름을 오름 차순으로 정렬해서 조회해주세요.
+
+SELECT first_name
+FROM employees
+ORDER BY  first_name;
+
+-- 사원별 급여의 평균을 조회해주세요.
+
+SELECT emp_no,avg(salary)
+from salaries
+GROUP BY emp_no;
+
+
+
+-- 사원별 급여의 평균이 30,000~50,000인,사원번호와 평균급여를 조회해주세요.
+
+SELECT emp_no,AVG(salary) AS avg_sal
+FROM salaries
+group BY emp_no
+	HAVING avg_sal>=30000 AND avg_sal <=50000;
+-- where은 전체에 대한 조건 having은 그룹에 대한 조건 where우선실행
+
+-- 사원별 급여 평균이 70,000이상인,사원의 사번, 이름,성, 성별을 조회해 주세요.
+SELECT emp.emp_no,emp.first_name,emp.last_name,emp.gender
+FROM employees as emp
+WHERE emp_no IN (
+SELECT sal.emp_no
+FROM salaries AS sal
+group by sal.emp_no 
+	HAVING AVG(sal.salary)>=70000);
+
+-- 현재 직책이 "senior engineer"인, 사원의 사원번호와 성을 조회해 주세요.
+
+SELECT emp.emp_no,
+emp.last_name
+FROM employees AS emp
+WHERE emp.emp_no in(
+SELECT tit.emp_no
+FROM titles AS tit
+WHERE tit.to_date>=NOW() .ti tittle='senior engineer');
