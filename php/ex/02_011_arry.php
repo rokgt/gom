@@ -38,7 +38,7 @@ $arr4 = [
 // var_dump($arr5[1][1][1]);
 
 $arr6 = [
-	"msg" => "OK"
+	"msg" => "OK"		
 	,"info"=>["name" => "홍길동"
 	,"age"=> 20
 	]	
