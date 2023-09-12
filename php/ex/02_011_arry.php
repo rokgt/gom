@@ -10,7 +10,7 @@ $arr =array(0, "a", 2, 7, 9);
 
 // var_dump($arr[1]);
 
-// echo $arr[1];
+echo $arr[1];
 
 $arr3 = ["배열", $arr[1], $arr2[2]];
 
@@ -104,11 +104,11 @@ $arr_krsort = [
 // $arr_push[] = 5;
 // print_r($arr_push);
 
-$arr_push2 = [
-	"a"=> 1
-	,"b"=> 2
-];
-$arr_push2["c"] = 3; 
-print_r($arr_push2);
+// $arr_push2 = [
+// 	"a"=> 1
+// 	,"b"=> 2
+// ];
+// $arr_push2["c"] = 3; 
+// print_r($arr_push2);
 
-?>
+// ?>

@@ -19,7 +19,7 @@ $obj = null;
 
 // 변수가 담고있는 타입을 알수있는 명령어
 
-// echo gettype ($double);
+echo gettype ($double);
 
 // 형변환 : 변수 앞에 (데이터타입)$num
 $num = 1;
@@ -27,7 +27,7 @@ $str = "1";
 
 // echo gettype((str)$int);
 
-echo $num + (int)$str;
+// echo $num + (int)$str;
 
 
 ?>
