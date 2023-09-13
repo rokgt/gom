@@ -79,16 +79,16 @@
 	
 // 	echo "{$gugu} X {$num} ={$i}\n";}
 // }
-for($gugu=1; $gugu<=9; $gugu++)
-if( $gugu===1 || $gugu===9 ) {
-	echo "{$gugu}단\n";
+// // for($gugu=1; $gugu<=9; $gugu++)
+// // if( $gugu===1 || $gugu===9 ) {
+// // 	echo "{$gugu}단\n";
 	
-	for($num =1; $num<=9; $num++){
-		$i= $gugu * $num;
+// // 	for($num =1; $num<=9; $num++){
+// // 		$i= $gugu * $num;
 		
 		
-	echo "{$gugu}X{$num}={$i}\n";}
-}
+// // 	echo "{$gugu}X{$num}={$i}\n";}
+// }
 
 // for($gugu=1; $gugu<=9; $gugu++) {
 // 	if($gugu!==1 && $gugu!==9)
@@ -100,4 +100,44 @@ if( $gugu===1 || $gugu===9 ) {
 		
 // 	echo "{$gugu}X{$num}={$i}\n";}
 // }
+// $arr = [
+// 	"1"=>"*"
+// 	,"2"=>"**"
+// 	,"3"=>"***"
+// 	,"4"=>"****"
+// 	,"5"=>"*****"
+// ];
+// foreach($arr as $val ) {
+// 	echo "$val\n";
+// }
 
+// for($star=1; $star<=5; $star++){
+// 	for($in_star=1; $in_star<=$star; $in_star++ )
+// 	echo"*";
+// 	echo"\n";
+// }
+
+$int_line =1;
+$int_star=1;
+while($int_line <=5) {
+	$int_star=1;
+	while($int_star<=$int_line){
+		$int_star++;
+		echo"*";
+		
+	
+	}
+
+	echo"\n";
+	$int_line++;
+
+}
+
+
+// function un_star(...$phy){
+// 	foreach($arr as $val ) {
+// 		echo "$val\n";
+// 	}
+	
+// }
+// echo un_star{"*"};

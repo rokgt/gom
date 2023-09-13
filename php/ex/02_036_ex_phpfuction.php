@@ -36,4 +36,4 @@
 // echo time();
 
 // date() : 원하는 형식으로 시간 표시해주는 함수
-echo date("Y-m-d-H:i:s", time());
+// echo date("Y-m-d-H:i:s", time());

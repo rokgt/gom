@@ -20,8 +20,8 @@
 $str="2781";
 $sub_str1=substr($str,0,1);
 $sub_str2=substr($str,1,1);
-$sub_str3=substr($str,-2,-1);
-$sub_str4=substr($str,3,4);
+$sub_str3=substr($str,2,1);
+$sub_str4=substr($str,3,1);
 echo $sub_str1+$sub_str2+$sub_str3+$sub_str4;
 
 
