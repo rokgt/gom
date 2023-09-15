@@ -7,6 +7,8 @@ $arr = [234,1,5,8,2,6,15,66];
 // asort($arr);
 // $count=8;
 // for($tmp > $arr; $arr<=7; $arr++){
+
+
 // for($z=$count-2; $z>=0; $z--){
 // 	for($i=0;$i<=$z; $i++){
 	
@@ -19,7 +21,13 @@ $arr = [234,1,5,8,2,6,15,66];
 	
 // }	
 // }
+
+// }
+	
+// }	
+
 // $i=0;
+
 // $z=count($arr);
 // while($i<8){
 // 	$z=count($arr)-1;
@@ -33,6 +41,20 @@ $arr = [234,1,5,8,2,6,15,66];
 // 			$arr[$z-1]=$tmp;}$z--;$i++;
 			
 // 		}
+// while($i<=7){
+	
+// 	$z=count($arr)-1;
+// 	while($z>0){
+		
+// 		if($arr[$z]<$arr[$z-1])
+// 		{
+// 			$tmp = $arr[$z];
+// 			$arr[$z]=$arr[$z-1];
+// 			$arr[$z-1]=$tmp;
+// 		}$z--;
+			
+// 		}$i++;
+	
 		
 	
 // }
@@ -54,6 +76,27 @@ while($i<$z){
 	
 }
 
+$i=0;
+
+$z=count($arr);
+while($i<=7){
+	
+	$z=count($arr)-1;
+	while($z>0){
+		
+		if($arr[$z]<$arr[$z-1])
+		{
+			$tmp = $arr[$z];
+			$arr[$z]=$arr[$z-1];
+			$arr[$z-1]=$tmp;
+		}$z--;
+			
+		}$i++;
+	
+		
+	
+}
+
 		
 	
 
@@ -62,5 +105,4 @@ while($i<$z){
 
 
 print_r($arr);
-
 
