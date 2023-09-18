@@ -70,16 +70,16 @@
 // } 
 // echo my_ap(10);
 
-function my_ad($num){
-	$sum=0;
-	while($num > 0){
-		$sum+=$num;
+// function my_ad($num){
+// 	$sum=0;
+// 	while($num > 0){
+// 		$sum+=$num;
 		
-		$num--;
-	}
-	return $sum;
-}
-echo my_ad(50);
+// 		$num--;
+// 	}
+// 	return $sum;
+// }
+// echo my_ad(50);
 
 
 
@@ -90,3 +90,19 @@ echo my_ad(50);
 // 	return $i+ my_recursion($i-1);
 // }
 // echo my_recursion(3);
+
+function test1($str) {
+	$str= " 함수 test1";
+	return $str;
+}
+
+function test2 (&$str) {
+	$str= "함수 test2";
+	return $str;
+}
+
+$str = "???";
+$result =test1($str);
+echo $str,"\n" ;
+
+echo $result;
