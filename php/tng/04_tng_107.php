@@ -39,7 +39,7 @@ $arr_me=[
 $stmt = $conn->prepare($sql);
 $stmt->execute($arr_me);// 쿼리실행
 $result = $stmt->fetchAll();
-$conn->commit();
+// $conn->commit();
 print_r($result);	
 
 // 2. 자신의 이름을 "둘리",성을 "호이"로 변경해주세요.

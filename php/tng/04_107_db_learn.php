@@ -77,40 +77,36 @@ $sql= " SELECT "
 	  ." emp.emp_no=tit.emp_no "
 	  ." WHERE tit.title IS NULL "
 	  ;
-
-$sql=" INSERT INTO " 
+	
+	  $db_conn=null;
+	  tng_db_conn($db_conn);   
+$sql_in=" INSERT INTO " 
 		." titles "
 		." VALUES ( "
 		." :emp_no "
 		." :title "
-		." :from_date "
+		." now() "
 		." :to_date "
 		." ) ";
 
 $arr=[
 	":emp_no"=>700000
 	,":title"=>'green'
-	,":from_date"=>'now()'
 	,":to_date"=>99990101
 ];
 
 
+$stmt1 = $db_conn->prepare($sql);
+$stmt1->execute();
+$result1 = $stmt1->fetchAll();
+// print_r($result1);
 
+$stmt2 = $db_conn->prepare($sql_in);
+$stmt2->execute($arr);
+$result = $stmt2->fetchAll();
+foreach($result1 as $emp_no){
+	if($emp_no["emp_no"]===$arr["emp_no"]);
+}
 
+print_r($result2);
 
-
-
-
-
-
-
-
-
-
-
-
-
-$stmt = $db_conn->prepare($sql);
-$stmt->execute($arr);
-$result = $stmt->fetchAll();
-print_r($result);
