@@ -87,6 +87,21 @@ FROM titles
 WHERE emp_no = 500000;
 
 
+UPDATE departments
+
+SET dept_name='php504'
+
+WHERE dept_name='d010';
+
+
+INSERT into departments(
+	dept_no
+	,dept_name	
+)
+VALUES (
+	'd010'
+	,'php504'
+	);
 
 		
 

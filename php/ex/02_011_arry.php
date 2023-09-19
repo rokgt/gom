@@ -1,27 +1,27 @@
 <?php
 // 인덱스 배열
-$arr2 = [0, 1, 2];
+// $arr2 = [0, 1, 2];
 
 
 //멀티 타입 배열
-$arr =array(0, "a", 2, 7, 9); 
+// $arr =array(0, "a", 2, 7, 9); 
 
 
 
 // var_dump($arr[1]);
 
-echo $arr[1];
+// echo $arr[1];
 
-$arr3 = ["배열", $arr[1], $arr2[2]];
+// $arr3 = ["배열", $arr[1], $arr2[2]];
 
 // var_dump($arr3);
 
 // 연상 배열
-$arr4 = [
-	"name" => "홍길동"
-	,"age"=> 18
-	,"gender"=> "남자"
-];
+// $arr4 = [
+// 	"name" => "홍길동"
+// 	,"age"=> 18
+// 	,"gender"=> "남자"
+// ];
 
 // echo $arr4["name"];
 
@@ -37,12 +37,12 @@ $arr4 = [
 // ];
 // var_dump($arr5[1][1][1]);
 
-$arr6 = [
-	"msg" => "OK"		
-	,"info"=>["name" => "홍길동"
-	,"age"=> 20
-	]	
-];
+// $arr6 = [
+// 	"msg" => "OK"		
+// 	,"info"=>["name" => "홍길동"
+// 	,"age"=> 20
+// 	]	
+// ];
 
 // var_dump($arr6["msg"]);
 // var_dump($arr6["info"]["age"]);
@@ -56,7 +56,7 @@ $arr6 = [
 // 배열의 정렬 :asort(),arsort(),ksort(),krsort()
 // asort() : 배열의 값을 오름차순 정렬
 
-$arr_asort = ["b", "a", "d", "c"];
+// $arr_asort = ["b", "a", "d", "c"];
 // asort($arr_asort);
 // print_r($arr_asort);
 
@@ -67,24 +67,24 @@ $arr_asort = ["b", "a", "d", "c"];
 
 // ksort() : 배열의 키을 오름차순 정렬
 
-$arr_ksort = [
-	"b" =>"1"
-	, "a" =>"2"
-	, "d" =>"3"
-	, "c" =>"4"
-];
+// $arr_ksort = [
+// 	"b" =>"1"
+// 	, "a" =>"2"
+// 	, "d" =>"3"
+// 	, "c" =>"4"
+// ];
 
 // ksort($arr_ksort);
 // print_r($arr_ksort);
 
 // krsort() : 배열의 키을 내림차순 정렬
 
-$arr_krsort = [
-	"b" =>"1"
-	, "a" =>"2"
-	, "d" =>"3"
-	, "c" =>"4"
-];
+// $arr_krsort = [
+// 	"b" =>"1"
+// 	, "a" =>"2"
+// 	, "d" =>"3"
+// 	, "c" =>"4"
+// ];
 // krsort($arr_ksort);
 // print_r($arr_ksort);
 
@@ -111,4 +111,22 @@ $arr_krsort = [
 // $arr_push2["c"] = 3; 
 // print_r($arr_push2);
 
-// ?>
+// 
+
+$arr=[
+	[
+		"emp_no" => 10001
+		,"gender" => "F"
+	]
+	,[
+		"emp_no" => 10002
+		,"gender" => "M"
+	]
+];
+
+// 남자인 경우에만 사원번호를 출력해주세요.
+foreach($arr as $key => $item){
+	if ($item["gender"] === "M" )
+	echo $item["emp_no"];
+
+}

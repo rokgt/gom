@@ -143,3 +143,6 @@ FROM employees emp1
 	INNER JOIN employees emp2
 		ON emp1.sup_no = emp2.emp_no;
 
+
+FLUSH PRIVILEGES;
+COMMIT;
