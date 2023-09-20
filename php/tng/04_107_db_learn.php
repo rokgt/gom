@@ -69,7 +69,7 @@ $db_conn=null;
 tng_db_conn($db_conn);
 
 $sql= " SELECT " 
-	  ." emp.* "
+	  ." emp.emp_no "
 	  ." FROM employees emp "
 	  ." LEFT OUTER JOIN "
 	  ." titles tit "
@@ -77,36 +77,61 @@ $sql= " SELECT "
 	  ." emp.emp_no=tit.emp_no "
 	  ." WHERE tit.title IS NULL "
 	  ;
-	
-	  $db_conn=null;
-	  tng_db_conn($db_conn);   
-$sql_in=" INSERT INTO " 
-		." titles "
+	  $stmt = $db_conn->prepare($sql);
+	  $stmt->execute();
+	  $result = $stmt->fetchAll();	  
+	print_r($result);
+	//   $db_conn=null;
+	//   tng_db_conn($db_conn);  
+	$sql=" INSERT INTO " 
+		." titles ( "
+		." emp_no "
+		." ,title "
+		." ,from_date "
+		." ,to_date "
+		." ) "
 		." VALUES ( "
 		." :emp_no "
-		." :title "
-		." now() "
-		." :to_date "
-		." ) ";
-
-$arr=[
-	":emp_no"=>700000
+		." ,:title "
+		." ,NOW() "
+		." ,99990101 "
+		." ) "; 
+	foreach($result as $item) {
+		$arr=[
+	":emp_no"=>$result["emp_no"]
 	,":title"=>'green'
-	,":to_date"=>99990101
-];
+	];
+	$stmt = $db_conn->prepare($sql);
+	$result = $stmt->execute($arr);
+	if(!$result) {
+		throw new Exception("Insert error");
+	}
+	$db_conn->commit;
+
+	}
+// $sql=" INSERT INTO " 
+// 		." titles "
+// 		." VALUES ( "
+// 		." :emp_no "
+// 		." :title "
+// 		." NOW() "
+// 		." :to_date "
+// 		." ) ";
+
+// $arr=[
+// 	":emp_no"=>$result1
+// 	,":title"=>'green'
+// 	,":to_date"=>99990101
+// ];
+
+// $stmt = $db_conn->prepare($sql);
+// $result = $stmt->execute($arr);
+// $result = $stmt2->fetchAll();
+// foreach($result1 as $emp_no){
+// 	if($emp_no["emp_no"]===$arr["emp_no"])
+// 	echo $emp_no["emp_no"];
+// }
 
 
-$stmt1 = $db_conn->prepare($sql);
-$stmt1->execute();
-$result1 = $stmt1->fetchAll();
-// print_r($result1);
-
-$stmt2 = $db_conn->prepare($sql_in);
-$stmt2->execute($arr);
-$result = $stmt2->fetchAll();
-foreach($result1 as $emp_no){
-	if($emp_no["emp_no"]===$arr["emp_no"]);
-}
-
-print_r($result2);
+print_r($result);
 
