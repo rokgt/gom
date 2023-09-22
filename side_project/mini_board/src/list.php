@@ -3,22 +3,20 @@
 	define("FILE_HEADER",ROOT."header.php");
 	require_once(ROOT."lib/lib_db.php");
 
-
 	$conn = null;
-	// DB 접속
-	if(!my_db_conn($conn)){
-		echo "DB Error : PDO Instance";
-		exit;
-	}
-	// var_dump($_SERVER);
+	$list_cnt=5;//한 페이지 최대 표시 수
+	$page_num=1;//페이지 번호 초기화
+	try{	// DB 접속
+		if(!my_db_conn($conn)){
+			throw new Exception("DB Error : PDO Instance"); //강제 예외발생 : DB Instance
+		}
 	// ----------
 	// 페이징 처리
 	// ----------
-	$list_cnt=5;//한 페이지 최대 표시 수
-	$page_num=1;//페이지 번호 초기화
+	// 총 게시글 수 검색	
 	$boards_cnt=db_select_boards_cnt($conn);
 	if($boards_cnt === false){
-		echo "DB Error : SELECT Count";
+		throw new Exception("DB Error : SELECT Count");//강제 예외발생 
 		exit;
 	}
 	$max_page_num = ceil($boards_cnt/$list_cnt);//최대 페이지 수
@@ -49,19 +47,17 @@ $arr_param =[
 
 	$result = db_select_boards_paging($conn, $arr_param);
 	if(!$result){
-		echo " DB Error : SELECT boards";
-		exit;
+		throw new Exception (" DB Error : SELECT boards");
+		
 	}
-	
-	
-	
-	
-	
-	
-	
-	db_destroy_conn($conn);//DB 파기
 
-	// var_dump($result);
+	}catch(Exception $e){
+		echo $e->getMessage(); // 예외발생 메세지 출력
+		exit;//처리 종료
+
+	}finally{
+		db_destroy_conn($conn);//DB 파기
+	}
 
 
 ?>
@@ -107,8 +103,12 @@ $arr_param =[
 			<tr>
 				<td><?php
 				echo $item["id"]?></td>
-				<td><?php
-				echo $item["title"]?></td>
+				<td>
+					<a href="/mini_board/src/detail.php/?id=<?php echo $item["id"];?>&page<?php echo $page_num;?>">
+					<?php
+						echo $item["title"]?>
+					</a>
+				</td>
 				<td><?php
 				echo $item["create_at"]?></td>
 			</tr>
