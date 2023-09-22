@@ -30,7 +30,7 @@ try{
 	$result = db_select_boards_id($conn,$arr_param);
 
 	// 게시글 조회 예외처리
-	if(!$result){
+	if($result===false){
 		//게시글 조회 에러
 		throw new Exception("DB ERROR : PDO select_id");
 		//게시글 조회 count 에러
@@ -46,7 +46,7 @@ try{
 	db_destroy_conn($conn);
 }
 
-$input_id = $_GET["id"];
+// $input_id = $_GET["id"];
 
 ?>
 
@@ -62,7 +62,7 @@ $input_id = $_GET["id"];
 	<?php 
 	require_once(FILE_HEADER);
 	?>
-	<table>
+	<table class="dt_table">
 		<tr>
 			<th>
 				글 번호
@@ -96,8 +96,8 @@ $input_id = $_GET["id"];
 			</td>
 		</tr>
 	</table>
-	<a href="#">수정</a>
-	<a href="/mini_board/src/list.php/?page=<?php echo $page;?>">취소</a>
-	<a href="#">삭제</a>
+	<a class ="dt_a" href="#">수정</a>
+	<a class ="dt_a" href="/mini_board/src/list.php/?page=<?php echo $page;?>">취소</a>
+	<a class ="dt_a" href="#" >삭제</a>
 </body>
 </html>
