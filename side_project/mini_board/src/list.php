@@ -75,7 +75,9 @@ $arr_param =[
 	require_once(FILE_HEADER);
 	?>
 	<main>
-	<a class="page-btn" href="/mini_board/src/insert.php">글작성</a>
+	<a class="m-a" href="/mini_board/src/insert.php">글작성</a>
+	<label class="li_sch"for="serch">검색</label>
+	<input class="li_sch" type="text" name="serch" id="serch">
 	<table>
 			<colgroup>
 				<col width="20%">

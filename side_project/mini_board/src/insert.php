@@ -52,16 +52,17 @@ if($http_method === "POST"){
 	<fieldset>
 		<form action="/mini_board/src/insert.php" method="post">
 
-			<label for="title">제목</label>
+			<label class="in_ti"for="title">제목</label>
 			<input type="text" name="title" id="title">
 			<br>
-			<label for="content">내용</label>
+			<label class="in_ti" for="content">내용</label>
 			<textarea name="content" id="content" cols="30" rows="10"></textarea>
 			<br>
-		<button type="submit">작성</button>
-		<a href="/mini_board/src/list.php">취소</a>	
-
-
+					
+				<button class= "in_btn" type="submit">작성</button>
+				<a  href="/mini_board/src/list.php">취소</a>
+				<button  type="submit">이미지 첨부</button>
+				<button  type="submit">파일 첨부</button>
 		</form>
 
 	</fieldset>
