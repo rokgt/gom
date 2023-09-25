@@ -1,0 +1,25 @@
+*{
+	box-sizing: border-box;
+}
+body{
+	margin:0;
+	padding:0;
+	background-image: url(./ecnc0cbcf71-706c-43bd-8744-1bc239cb2b19.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+header {
+	width: 100%;
+	padding: 2rem;
+
+}
+header>h1 {
+	
+	color: firebrick;
+	text-align: center;
+	
+	
+	margin: 0 auto;
+	font-size: 1.5rem;
+
+}

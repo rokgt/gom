@@ -5,6 +5,11 @@ require_once(ROOT."lib/lib_db.php");// DB관련 라이브러리
 
 $id= ""; //게시글 id
 $conn = null;
+
+// $page_name = $_SERVER["PHP_SELF"];
+
+// $chk_detail = isset($_GET["test"]) ? $_GET["test"] : "update";
+
 try{
 	
 	// id 확인
@@ -76,6 +81,11 @@ try{
 				제목
 			</th>
 			<td>
+				  
+				<!-- // if($chk_detail >=1) {
+				// 	echo $item["title"];
+
+				// } -->
 			<?php echo $item["title"];?>
 			</td>
 		</tr>
@@ -96,7 +106,7 @@ try{
 			</td>
 		</tr>
 	</table>
-	<a class ="dt_a" href="#">수정</a>
+	<a class ="dt_a" href="/mini_board/src/update.php/?id=<?php echo $id;?>&page=<?php echo $page;?>">수정페이지로</a>
 	<a class ="dt_a" href="/mini_board/src/list.php/?page=<?php echo $page;?>">취소</a>
 	<a class ="dt_a" href="#" >삭제</a>
 </body>
