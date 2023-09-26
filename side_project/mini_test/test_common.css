@@ -20,6 +20,30 @@ header>h1 {
 	
 	
 	margin: 0 auto;
-	font-size: 1.5rem;
+	font-size: 4rem;
 
+}
+main {
+	display: flex;
+	
+}
+table{
+	color: aliceblue;
+	border-collapse: collapse;
+	width: 70%;
+	height: 500px;
+	margin: 50px auto;
+	font-size: 1.5rem;
+	text-align: center;
+	
+	
+	
+}
+div{
+	color: cyan;
+	width: 20%;
+	margin:50px auto;	
+}
+button{
+	flex-wrap: wrap ;
 }

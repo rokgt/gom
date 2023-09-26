@@ -41,6 +41,8 @@ function db_select_boards_paging(&$conn,&$arr_param){
 			."		,create_at "
 			." FROM "
 			."		boards "
+			." WHERE "
+			."		delete_flg ='0' "
 			." ORDER BY "
 			."		id DESC "
 			." LIMIT :list_cnt OFFSET :offset "
@@ -66,6 +68,8 @@ function db_select_boards_cnt(&$conn) {
 			."     count(id) as cnt "
 			." FROM "
 			."		 boards "
+			." WHERE "
+			."		delete_flg = '0' "
 			;
 			try{
 				$stmt = $conn->query($sql);
@@ -112,6 +116,8 @@ function db_select_boards_id(&$conn,&$arr_param){
 	."			boards "
 	."		WHERE "
 	."			id = :id "
+	."		AND "
+	."			delete_flg = '0' "
 	;
 	$arr_ps =[
 		":id"=>$arr_param["id"]
@@ -153,5 +159,28 @@ function db_update_boards_id(&$conn, &$arr_param) {
 	}
 
 }
+
+function db_delete_boards_id(&$conn, &$arr_param){
+	$sql= " UPDATE boards "
+		  ." SET "
+		  ." 		delete_at= now() "
+		  ." 		,delete_flg = '1' "
+		  ." WHERE "
+		  ."		id=:id "
+		  ;
+	$arr_ps = [
+		":id"=> $arr_param["id"]
+	];  
+	try {
+		// 2. Query 실행
+		$stmt=$conn->prepare($sql);
+		$result = $stmt->execute($arr_ps);
+		return $result;//정상종료 : true 리턴
+	}catch(Exception $e) {
+		echo $e->getMessage();//Exception 메세지 출력
+		return false;//예외발생 :false 리턴
+		}
+	}
+
 
 ?>

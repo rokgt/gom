@@ -6,7 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./test_common.css">
+	<link rel="stylesheet" href="test_common.css">
 	<title>Document</title>
 </head>
 <body>
@@ -14,6 +14,20 @@
 		<h1>소소한 나눔</h1>
 	</header>
 	<main>
+		<div>
+			<div>
+				게시판
+			</div>
+			<div>
+				갤러리
+			</div>
+			<div>
+				물어볼거
+			</div>
+			<div>
+				후원
+			</div>
+		</div>
 		<table>
 			<tr>
 				<th>
@@ -81,8 +95,14 @@
 					2023-09-25 17:38
 				</td>
 			</tr>
+			
+			
 		</table>
+		
 	</main>
-	
+	<button type="submit">나눔신청</button>
+	<section>
+		
+	</section>
 </body>
 </html>
