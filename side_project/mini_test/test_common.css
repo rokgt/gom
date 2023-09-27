@@ -44,6 +44,8 @@ div{
 	width: 20%;
 	margin:50px auto;	
 }
-button{
-	flex-wrap: wrap ;
+a{
+	text-decoration: none;
+	color: deeppink;
+	margin: 30px auto;
 }

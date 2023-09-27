@@ -117,21 +117,21 @@
 // 	echo"\n";
 // }
 
-$int_line =1;
-$int_star=1;
-while($int_line <=5) {
-	$int_star=1;
-	while($int_star<=$int_line){
-		$int_star++;
-		echo"*";
+// $int_line =1;
+// $int_star=1;
+// while($int_line <=5) {
+// 	$int_star=1;
+// 	while($int_star<=$int_line){
+// 		$int_star++;
+// 		echo"*";
 		
 	
-	}
+// 	}
 
-	echo"\n";
-	$int_line++;
+// 	echo"\n";
+// 	$int_line++;
 
-}
+// }
 
 
 // function un_star(...$phy){
@@ -141,3 +141,20 @@ while($int_line <=5) {
 	
 // }
 // echo un_star{"*"};
+$star=5;
+
+while($star>=1){
+	$gara=1;
+	while($gara<=5){
+		if($gara<=$star){
+
+	echo "*";	
+}	else 
+{	echo"";
+	}
+	$gara++;
+	
+	
+}echo "\n";$star--;
+}
+// 변수를 하나 더 줘서 해보기
