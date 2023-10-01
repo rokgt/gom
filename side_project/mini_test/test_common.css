@@ -34,11 +34,14 @@ table{
 	height: 500px;
 	margin: 50px auto;
 	font-size: 1.5rem;
-	text-align: center;
-	
-	
-	
+	text-align: center;	
 }
+
+td{
+	border-bottom: 1px solid white;
+	text-align: center;
+}
+
 div{
 	color: cyan;
 	width: 20%;
@@ -47,5 +50,15 @@ div{
 a{
 	text-decoration: none;
 	color: deeppink;
-	margin: 30px auto;
+	margin: 50px 30px;
+	display: inline-block;
+	font-size: 2rem;
+}
+section{
+	text-align: center;
+}
+button{
+	position: relative;
+	left: 30%;
+	
 }
