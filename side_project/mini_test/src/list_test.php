@@ -1,5 +1,24 @@
 <?php
+define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/mini_test/src/");
+require_once(ROOT."lib/lib_bd.php");
 
+$conn= null;
+if(!my_db_conn($conn)){
+	echo "DB Error : PDO Instance";
+	exit;
+}
+
+$result=db_select_boards_paging($conn);
+if(!$result){
+	echo "DB Error : SELECT boards";
+	exit;
+}
+
+
+
+
+db_destroy_conn($conn);
+// var_dump($result);
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -29,6 +48,11 @@
 			</div>
 		</div>
 		<table>
+			<colgroup>
+				<col width="20%">
+				<col width="50%">
+				<col width="30%">
+			</colgroup>
 			<tr>
 				<th>
 					번호
@@ -40,63 +64,23 @@
 					작성일
 				</th>
 			</tr>
+			<?php 
+
+				foreach($result as $item){
+			?>
 			<tr>
 				<td>
-					1
+					<?php echo $item["id"] ?>
 				</td>
 				<td>
-					1번
+				<?php echo $item["title"] ?>
 				</td>
 				<td>
-					2023-09-25 17:38
+				<?php echo $item["create_at"] ?>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					2
-				</td>
-				<td>
-					2번
-				</td>
-				<td>
-					2023-09-25 17:38
-				</td>
-			</tr>
-			<tr>
-				<td>
-					3
-				</td>
-				<td>
-					3번
-				</td>
-				<td>
-					2023-09-25 17:38
-				</td>
-			</tr>
-			<tr>
-				<td>
-					4
-				</td>
-				<td>
-					4번
-				</td>
-				<td>
-					2023-09-25 17:38
-				</td>
-			</tr>
-			<tr>
-				<td>
-					5
-				</td>
-				<td>
-					5번
-				</td>
-				<td>
-					2023-09-25 17:38
-				</td>
-			</tr>
-			
-			
+			<?php } ?>
+						
 		</table>
 		
 	</main>

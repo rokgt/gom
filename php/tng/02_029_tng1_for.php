@@ -148,9 +148,9 @@ while($star>=1){
 	while($gara<=5){
 		if($gara<=$star){
 
-	echo "*";	
+	echo "";	
 }	else 
-{	echo"";
+{	echo"*";
 	}
 	$gara++;
 	
