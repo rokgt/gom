@@ -77,11 +77,9 @@ $arr_param =[
 	<main class="container">
 		<div>
 		<a class="m-a" href="/mini_board/src/insert.php">글작성</a>
-		<label class="li_sch"for="serch">검색</label>
-		<input class="li_sch" type="text" name="serch" id="serch">
 		</div>
 	
-	<table>
+	<table class="table-striped">
 	
 			<colgroup>
 				<col width="20%">
@@ -124,11 +122,12 @@ $arr_param =[
 			<a class="page-btn" href="/mini_board/src/list.php/?page=<?php echo $prev_page_num?>">이전</a>
 			<?php 
 				for($i=1 ;$i<= $max_page_num; $i++){
+					$str = (int)$page_num===$i? "bk-a" : "";
 					
 			?>		
 			
 			
-			<a class="page-btn" href="/mini_board/src/list.php/?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+			<a class="page-btn"<?php echo $str?> href="/mini_board/src/list.php/?page=<?php echo $i; ?>"><?php echo $i; ?></a>
 			<?php	} ?>
 			<a class="page-btn" href="/mini_board/src/list.php/?page=<?php echo $next_page_num?>">다음</a>
 		</section>

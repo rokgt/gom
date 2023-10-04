@@ -83,7 +83,7 @@ try{
 	?>
 	<main class="container">
 	<form action="/mini_board/src/update.php" method="post">
-		<table>
+		<table class="table-striped">
 			<input type="hidden" name="id" value="<?php echo $id?>">
 			<input type="hidden" name="page" value="<?php echo $page?>">
 			<tr>
@@ -114,8 +114,9 @@ try{
 			</tr>
 			
 		</table>
+		<section>
 		<button class="a_can" type="submit">수정</button>
-		<a class ="dt_a" href="/mini_board/src/detail.php/?id=<?php echo $id;?>&page=<?php echo $page;?>">취소</a>
+		<a class ="dt_a" href="/mini_board/src/detail.php/?id=<?php echo $id;?>&page=<?php echo $page;?>">취소</a></section>
 	</form>
 	</main>
 	

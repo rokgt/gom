@@ -68,7 +68,7 @@ try{
 	require_once(FILE_HEADER);
 	?>
 	<main class="container">
-	<table class="dt_table">
+	<table class="table-striped">
 		<tr>
 			<th>
 				글 번호
@@ -107,9 +107,11 @@ try{
 			</td>
 		</tr>
 	</table>
-	</main>
+	<section>
 	<a class ="dt_a" href="/mini_board/src/update.php/?id=<?php echo $id;?>&page=<?php echo $page;?>">수정</a>
 	<a class ="dt_a" href="/mini_board/src/list.php/?page=<?php echo $page;?>">취소</a>
-	<a class ="dt_a" href="/mini_board/src/delete.php/?id=<?php echo $id;?>&page=<?php echo $page;?>" >삭제</a>
+	<a class ="dt_a" href="/mini_board/src/delete.php/?id=<?php echo $id;?>&page=<?php echo $page;?>" >삭제</a></section>
+	</main>
+	
 </body>
 </html>

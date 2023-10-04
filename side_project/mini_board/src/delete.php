@@ -105,7 +105,7 @@ try{
 	require_once(FILE_HEADER);
 	?>
 	<main class="container">
-		<table>
+		<table class="table-striped">
 			<caption>
 				삭제하면 영구적으로 복구 할 수 없습니다.
 				<br>
