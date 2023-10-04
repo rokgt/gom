@@ -58,11 +58,10 @@ if($http_method === "POST"){
 			<label class="in_ti" for="content">내용</label>
 			<textarea name="content" id="content" cols="30" rows="10"></textarea>
 			<br><br>
-					
+			<section>	
 				<button class= "in_btn" type="submit">작성</button>
-				<a  href="/mini_board/src/list.php">취소</a>
-				<button  type="submit">이미지 첨부</button>
-				<button  type="submit">파일 첨부</button>
+				<a class="a_can" href="/mini_board/src/list.php">취소</a>
+				
 		</form>
 
 	</fieldset>

@@ -67,6 +67,7 @@ try{
 	<?php 
 	require_once(FILE_HEADER);
 	?>
+	<main class="container">
 	<table class="dt_table">
 		<tr>
 			<th>
@@ -106,7 +107,8 @@ try{
 			</td>
 		</tr>
 	</table>
-	<a class ="dt_a" href="/mini_board/src/update.php/?id=<?php echo $id;?>&page=<?php echo $page;?>">수정페이지로</a>
+	</main>
+	<a class ="dt_a" href="/mini_board/src/update.php/?id=<?php echo $id;?>&page=<?php echo $page;?>">수정</a>
 	<a class ="dt_a" href="/mini_board/src/list.php/?page=<?php echo $page;?>">취소</a>
 	<a class ="dt_a" href="/mini_board/src/delete.php/?id=<?php echo $id;?>&page=<?php echo $page;?>" >삭제</a>
 </body>

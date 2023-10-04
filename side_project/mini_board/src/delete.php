@@ -104,7 +104,7 @@ try{
 <?php 
 	require_once(FILE_HEADER);
 	?>
-	<main>
+	<main class="container">
 		<table>
 			<caption>
 				삭제하면 영구적으로 복구 할 수 없습니다.
@@ -149,8 +149,8 @@ try{
 	<section>
 		<form action="/mini_board/src/delete.php" method="POST">
 			<input type="hidden" name="id"value="<?php echo $id;?>">
-		<button type="submit">동의</button>
-		<a href="/mini_board/src/detail.php/?id=<?php echo $id;?>&page=<?php echo $page;?>">취소</a>		
+		<button class= "in_btn" type="submit">동의</button>
+		<a class="a_can" href="/mini_board/src/detail.php/?id=<?php echo $id;?>&page=<?php echo $page;?>">취소</a>		
 		</form>
 	</section>
 </body>

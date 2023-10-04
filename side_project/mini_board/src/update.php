@@ -81,6 +81,7 @@ try{
 	<?php 
 	require_once(FILE_HEADER);
 	?>
+	<main class="container">
 	<form action="/mini_board/src/update.php" method="post">
 		<table>
 			<input type="hidden" name="id" value="<?php echo $id?>">
@@ -113,9 +114,10 @@ try{
 			</tr>
 			
 		</table>
-		<button type="submit">수정확인</button>
-		<a class ="dt_a" href="/mini_board/src/detail.php/?id=<?php echo $id;?>&page=<?php echo $page;?>">수정취소</a>
+		<button class="a_can" type="submit">수정</button>
+		<a class ="dt_a" href="/mini_board/src/detail.php/?id=<?php echo $id;?>&page=<?php echo $page;?>">취소</a>
 	</form>
+	</main>
 	
 </body>
 </html>

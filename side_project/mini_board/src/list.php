@@ -74,7 +74,7 @@ $arr_param =[
 <?php 
 	require_once(FILE_HEADER);
 	?>
-	<main>
+	<main class="container">
 		<div>
 		<a class="m-a" href="/mini_board/src/insert.php">글작성</a>
 		<label class="li_sch"for="serch">검색</label>
