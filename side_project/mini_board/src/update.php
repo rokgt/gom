@@ -1,13 +1,15 @@
 <?php
 define("ROOT",$_SERVER["DOCUMENT_ROOT"]."/mini_board/src/");//웹서버 root 패스 생성
 define("FILE_HEADER",ROOT."header.php");//헤더 패스
+define("ERROR_MSG_PARAM"," %s : 필수 입력 사항입니다.");
 require_once(ROOT."lib/lib_db.php");// DB관련 라이브러리
 
 $conn = null; //DB연결용 변수
-$id= isset($_GET["id"]) ? $_GET["id"] : $_POST["id"]; //id셋팅
-$page= isset($_GET["page"]) ? $_GET["page"] : $_POST["page"]; //page셋팅
-$http_method=$_SERVER["REQUEST_METHOD"];//Method 확인
 
+$http_method=$_SERVER["REQUEST_METHOD"];//Method 확인
+$arr_err_msg = [];
+$title="";
+$content="";
 try{
 	if(!my_db_conn($conn)){
 		//DB Instance 에러
@@ -17,20 +19,43 @@ try{
 	if($http_method === "GET"){
 		// GETMethod의 경우
 		//게시글 데이터 조회를 위한 파라미터 셋팅
-		$arr_param=[
-			"id"=> $id
-		];
-		// 게시글 데이터 조회
-		$result = db_select_boards_id($conn, $arr_param);
-		// 게시글 조회 예외처리
-		if($result === false) {
-			throw new Exception("DB Error : PDO select_id");
-		} else if(!(count($result) === 1)){
-			// 게시글 조회 예외처리
-			throw new Exception("DB Error : PDO select_id Count,".count($result));
-		}
-		$item = $result[0];
+		$id=isset($_GET["id"]) ? ($_GET["id"]) : $_POST["id"];
+	$page=isset($_GET["page"]) ? ($_GET["page"]) : $_POST["page"];
+	if($id===""){
+		$arr_err_msg[]=sprintf(ERROR_MSG_PARAM,"id");
+	}
+	if($page ===""){
+		$arr_err_msg[]=sprintf(ERROR_MSG_PARAM,"page");
+	}
+	if(count($arr_err_msg)>=1){
+		throw new Exception(implode("<br>",$arr_err_msg));
+	} 
+
+		
 	} else {
+		$id=isset($_POST["id"]) ? ($_POST["id"]) : "";
+		$page=isset($_POST["page"]) ? ($_POST["page"]) : "";
+		$title=isset($_POST["title"]) ? ($_POST["title"]) : "";
+		$content=isset($_POST["content"]) ? ($_POST["content"]) : "";
+	if($id===""){
+		$arr_err_msg[]=sprintf(ERROR_MSG_PARAM,"id");
+	}
+	if($page ===""){
+		$arr_err_msg[]=sprintf(ERROR_MSG_PARAM,"page");
+	}
+	if(count($arr_err_msg)>=1){
+		throw new Exception(implode("<br>",$arr_err_msg));}
+	
+	if($title===""){
+		$arr_err_msg[]=sprintf(ERROR_MSG_PARAM,"title");
+	}
+	if($content ===""){
+		$arr_err_msg[]=sprintf(ERROR_MSG_PARAM,"content");
+	}
+	
+	if(count($arr_err_msg)===0){
+
+	
 		// POST Method의 경우
 		// 게시글 수정을 위해 파라미터 셋팅
 		$arr_param = [
@@ -50,14 +75,28 @@ try{
 		header("Location: detail.php/?id={$id}&page={$page}");//디테일페이지로 이동
 		exit;
 
+		}
 	}
 
-
+	$arr_param=[
+		"id"=> $id
+	];
+	// 게시글 데이터 조회
+	$result = db_select_boards_id($conn, $arr_param);
+	// 게시글 조회 예외처리
+	if($result === false) {
+		throw new Exception("DB Error : PDO select_id");
+	} else if(!(count($result) === 1)){
+		// 게시글 조회 예외처리
+		throw new Exception("DB Error : PDO select_id Count,".count($result));
+	}
+	$item = $result[0];
 }catch(Exception $e){
 	if($http_method === "POST"){
 		$conn->rollBack();//rollback
 	}
-	echo $e->getMessage();//Exception 예외 메세지 출력
+	// echo $e->getMessage();//Exception 예외 메세지 출력
+	header("Location: /mini_board/src/error.php/?err_msg={$e->getMessage()}");
 		exit;//처리종료
 
 }finally{
@@ -82,6 +121,13 @@ try{
 	require_once(FILE_HEADER);
 	?>
 	<main class="container">
+	<?php
+			foreach($arr_err_msg as $val) {
+			?>
+				<p><?php echo $val?></p>
+		<?php		
+			}
+		?>
 	<form action="/mini_board/src/update.php" method="post">
 		<table class="table-striped">
 			<input type="hidden" name="id" value="<?php echo $id?>">

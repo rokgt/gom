@@ -53,6 +53,7 @@ $arr_param =[
 
 	}catch(Exception $e){
 		echo $e->getMessage(); // 예외발생 메세지 출력
+		header("Location: error.php/?err_msg={$e->getMessage()}");
 		exit;//처리 종료
 
 	}finally{

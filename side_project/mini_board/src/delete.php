@@ -84,7 +84,8 @@ try{
 	if($http_method === "POST"){
 		$conn->rollback();
 	}
-	echo $e->getMessage();//에러 메세지 출력
+	// echo $e->getMessage();//에러 메세지 출력
+	header("Location: error.php/?err_msg={$e->getMessage()}");
 	exit;//처리종료
 }finally{
 
