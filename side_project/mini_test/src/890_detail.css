@@ -1,0 +1,35 @@
+body {
+	width: 500px;
+}
+main{
+	margin: auto;
+	border: 1px solid black;
+	text-align: center;
+}
+
+td{
+	width: 100px;
+	word-break:break-all;
+	
+}
+
+img{
+	width: 150px;
+	height: 150px;
+	
+	
+	
+	border-radius: 50%;
+}
+a{
+	text-decoration: none;
+}
+footer{
+	display: flex;
+	justify-content: space-around;
+	
+}
+footer>div{
+	
+	text-align: center;
+}
