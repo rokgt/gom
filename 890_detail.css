@@ -23,8 +23,11 @@ h1 {
     height: 138px;
     font-weight: bold;
     font-size: 89px;
-    color: white;
+    color: black;
     box-sizing: border-box;
+}
+h1::first-letter{
+	color: #ffffff;
 }
 /* header{
 	background-color: #ffcf02;
@@ -37,7 +40,7 @@ header>div:first-letter{
 	color: #ffffff;
 }
 main{
-	margin: 30px auto  ;
+	margin: 30px auto 50px ;
 	height: 763px;
 	
 	
@@ -47,7 +50,7 @@ main{
 .container {
     /* width: 500px; */
     height: 675px;
-    
+    overflow: auto;
 }
 .container::-webkit-scrollbar {
     width: 13px;
@@ -73,7 +76,7 @@ main>div{
 	background-color: #282864;
 	width: 417px;
 	/* height: auto; */
-	margin: auto;
+	margin:0 auto;
 	display: flex;
 	flex-wrap: wrap;	
 	/* justify-content: center; */
@@ -82,7 +85,9 @@ main>div{
 	
 }
 main>div>div{
-	margin: 0 0 7px 0 ;
+	margin: 14px;
+	padding: 20px;
+	height: 47px;
 	font-size: 22px;
 	padding: 38px, 42px;
 	border-radius: 10px;
@@ -95,11 +100,10 @@ main>div>div{
 	background-color: #ffffff;
 	width: 348px;
 	height: 47px;
-	
+	padding: 38px, 42px;
 	border-radius: 10px;
 	text-align: center;
 }
-
 
 .div_ylw{
 	background-color: #ffcf02;
@@ -108,17 +112,16 @@ main>div>div{
 	color: #ffffff;
 	width: 115px;
 	height: 47px;
-	
+	padding: 38px, 42px;
 	border-radius: 10px;
 	text-align: center;
 	line-height: 47px;
 }
-
 .div_memo{
 	width: 348px;
 	height: auto;
 	background-color: #ffffff;
-	
+	padding: 38px, 42px;
 	border-radius: 10px;
 	margin: 14px auto;
 
