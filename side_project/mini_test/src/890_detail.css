@@ -42,6 +42,7 @@ main{
 	
 	
 	
+	
 }
 
 .container {
@@ -59,6 +60,7 @@ main{
 .img_cart{
 	width: 78px;
 	height:78px ;
+	margin-top: 10px;
 }
 
 .img_dt{
@@ -73,18 +75,19 @@ main>div{
 	background-color: #282864;
 	width: 417px;
 	/* height: auto; */
-	margin: auto;
+	
 	display: flex;
 	flex-wrap: wrap;	
 	/* justify-content: center; */
 	position: relative;
 	border-radius: 10px;
+	padding: 38px 42px;
 	
 }
 main>div>div{
-	margin: 0 0 7px 0 ;
+	margin: 7px;
 	font-size: 22px;
-	padding: 38px, 42px;
+	
 	border-radius: 10px;
 	word-break:break-all
 	
@@ -93,7 +96,7 @@ main>div>div{
 
 .div_wt{
 	background-color: #ffffff;
-	width: 348px;
+	width: 320px;
 	height: 47px;
 	
 	border-radius: 10px;
@@ -104,23 +107,23 @@ main>div>div{
 .div_ylw{
 	background-color: #ffcf02;
 	position: absolute;
-	left: 34px;
+	
 	color: #ffffff;
 	width: 115px;
 	height: 47px;
-	
+	left: 55px;
 	border-radius: 10px;
 	text-align: center;
 	line-height: 47px;
 }
 
 .div_memo{
-	width: 348px;
+	width: 355px;
 	height: auto;
 	background-color: #ffffff;
 	
 	border-radius: 10px;
-	margin: 14px auto;
+	margin: 14px ;
 
 }
 section{
