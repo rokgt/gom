@@ -70,19 +70,19 @@ main{
 	margin: auto;
 }
 
-main>div{
+/* main>div{
 	background-color: #282864;
 	width: 417px;
 	/* height: auto; */
 	
-	display: flex;
+	/*display: flex;
 	flex-wrap: wrap;	
 	/* justify-content: center; */
-	position: relative;
+	/*position: relative;
 	border-radius: 10px;
 	padding: 38px 42px;
 	
-}
+} */
 main>div>div{
 	margin: 7px;
 	font-size: 22px;
