@@ -3,9 +3,21 @@ define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/mini_test/src/");
 require_once(ROOT."lib/lib_bd.php");
 
 $conn = null;
+$list_cnt=5;
+$page_num=1;
 if(!my_db_conn($conn)){
 	echo "DB Error : PDO Instance";
 	exit;
+}
+
+$boards_cnt=db_select_boards_cnt($conn);
+if($boards_cnt===false){
+	throw new Exception("DB Error : SELECT Count");
+	exit;
+}
+$max_page_num = ceil($boards_cnt/$list_cnt);
+if(isset($_GET["page"])){
+	$page_num=$_GET["page"];
 }
 
 $result = db_select_boards_paging($conn);

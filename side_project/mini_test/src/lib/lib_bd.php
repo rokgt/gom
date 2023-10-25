@@ -42,12 +42,12 @@ function db_select_boards_paging(&$conn){
 		."		boards "
 		." ORDER BY "
 		."		id DESC "
-		
+		." LIMIT :list_cnt OFFSET :offset "
 		;
 	
  		$arr_ps = [
-			// ":list_cnt"=> $arr_param["list_cnt"]
-			// ,":offset"=> $arr_param["offset"]
+			":list_cnt"=> $arr_param["list_cnt"]
+			,":offset"=> $arr_param["offset"]
 		];
 		$stmt = $conn ->prepare($sql);
 		$stmt->execute($arr_ps);
@@ -58,5 +58,23 @@ function db_select_boards_paging(&$conn){
 	}
 }
 
+function db_select_boards_cnt(&$conn) {
+	$sql=
+			" SELECT "
+			."     count(id) as cnt "
+			." FROM "
+			."		 boards "
+			." WHERE "
+			."		delete_flg = '0' "
+			;
+			try{
+				$stmt = $conn->query($sql);
+				$result = $stmt->fetchAll();
+				return (int)$result[0]["cnt"];// 정상: 쿼리 결과
+			}catch(Exception $e){
+				return false;// 예외발생 :false 리턴
+			}
+
+}
 
 ?>
