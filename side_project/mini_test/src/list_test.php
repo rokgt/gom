@@ -2,17 +2,19 @@
 define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/mini_test/src/");
 require_once(ROOT."lib/lib_bd.php");
 
-$conn= null;
+$conn = null;
 if(!my_db_conn($conn)){
 	echo "DB Error : PDO Instance";
 	exit;
 }
 
-$result=db_select_boards_paging($conn);
+$result = db_select_boards_paging($conn);
 if(!$result){
+	// var_dump($result);
 	echo "DB Error : SELECT boards";
 	exit;
 }
+ 
 
 
 
@@ -33,18 +35,28 @@ db_destroy_conn($conn);
 		<h1>소소한 나눔</h1>
 	</header>
 	<main>
-		<div>
+		<div class=side1>
 			<div>
-				게시판
+				<a href="">
+					게시판
+				</a>
 			</div>
 			<div>
-				갤러리
+				<a href="">
+					갤러리
+				</a>
+				
 			</div>
 			<div>
-				물어볼거
+				<a href="">
+					물어볼거
+				</a>
 			</div>
 			<div>
-				후원
+				<a href="">
+					후원
+				</a>
+				
 			</div>
 		</div>
 		<table>
@@ -76,13 +88,15 @@ db_destroy_conn($conn);
 				<?php echo $item["title"] ?>
 				</td>
 				<td>
-				<?php echo $item["create_at"] ?>
+				 <?php echo $item["create_at"] ?> 
 				</td>
 			</tr>
 			<?php } ?>
 						
 		</table>
-		
+		<div>
+			광고 기다리는중....
+		</div>
 	</main>
 	<button type="submit">나눔신청</button>
 	<section>

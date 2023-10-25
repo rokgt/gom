@@ -31,7 +31,7 @@ function db_destroy_conn(&$conn) {
 	$conn=null;
 }
 
-function db_select_boards_paging($conn){
+function db_select_boards_paging(&$conn){
 	try {
 		$sql=
 		" SELECT "
@@ -42,9 +42,13 @@ function db_select_boards_paging($conn){
 		."		boards "
 		." ORDER BY "
 		."		id DESC "
+		
 		;
 	
- 		$arr_ps = [];
+ 		$arr_ps = [
+			// ":list_cnt"=> $arr_param["list_cnt"]
+			// ,":offset"=> $arr_param["offset"]
+		];
 		$stmt = $conn ->prepare($sql);
 		$stmt->execute($arr_ps);
 		$result=$stmt->fetchAll();

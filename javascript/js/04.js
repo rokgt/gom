@@ -20,3 +20,52 @@ console.log(u_name);
 const AGE = 19;
 // AGE = 20;
  console.log(AGE);
+
+// -----------------
+// 스코프
+// -----------------
+
+// 전역 스코프
+
+let gender ="M"
+
+
+// 함수레벨 스코프
+
+function test1(){
+	let t = "test1";
+	console.log(t);
+	console.log(gender);
+}
+
+// 블록레벨 스코프{중괄호 안에 }
+
+// function test2(){
+// 	var t = "test1";
+// 	if(true){
+// 		var t ="test2"
+// 	}
+// 	console.log(t);
+// }
+// function test3(){
+// 	let t = "test1";
+// 	if(true){
+// 		let t ="test2"
+// 	}
+// 	console.log(t);
+// }
+// -----------------
+// 호이스팅 (hoisting)
+// -----------------
+// 인터프리티가 변수와 함수의 메모리 공간을 선언 전에 미리 할당하는것
+
+// console.log(htest1());
+// console.log(hvar);
+// console.log(hlet);
+
+// function htest1(){
+// 	return "htest1 함수 입니다.";
+// }
+
+// var hvar ="var로 선언";
+// let hlet ="let으로 선언";

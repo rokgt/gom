@@ -1,4 +1,4 @@
-CREATE DATABASE mini_boardemployees;
+CREATE DATABASE mini_board;
 
 USE mini_board;
 

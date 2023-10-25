@@ -1,7 +1,10 @@
 *{
 	box-sizing: border-box;
+	
 }
 body{
+
+	
 	margin:0;
 	padding:0;
 	background-image: url(./ecnc0cbcf71-706c-43bd-8744-1bc239cb2b19.jpg);
@@ -24,6 +27,7 @@ header>h1 {
 
 }
 main {
+
 	display: flex;
 	
 }
@@ -42,7 +46,7 @@ td{
 	text-align: center;
 }
 
-div{
+div,.side1{
 	color: cyan;
 	width: 20%;
 	margin:50px auto;	
