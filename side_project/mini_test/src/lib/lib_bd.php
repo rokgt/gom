@@ -31,7 +31,7 @@ function db_destroy_conn(&$conn) {
 	$conn=null;
 }
 
-function db_select_boards_paging(&$conn){
+function db_select_boards_paging(&$conn,&$arr_param){
 	try {
 		$sql=
 		" SELECT "

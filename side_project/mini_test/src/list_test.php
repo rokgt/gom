@@ -19,8 +19,26 @@ $max_page_num = ceil($boards_cnt/$list_cnt);
 if(isset($_GET["page"])){
 	$page_num=$_GET["page"];
 }
+$offset = ($page_num-1)*$list_cnt;
 
-$result = db_select_boards_paging($conn);
+$prev_page_num = $page_num - 1;
+if($prev_page_num === 0){
+	$prev_page_num =1;
+}
+// 다음 버튼
+$next_page_num = $page_num + 1;
+if($next_page_num > $max_page_num){
+	$next_page_num =$max_page_num;
+}
+
+// DB 조회시 사용할 데이터 배열
+$arr_param =[
+"list_cnt"=> $list_cnt
+,"offset" => $offset
+];
+
+
+$result = db_select_boards_paging($conn,$arr_param);
 if(!$result){
 	// var_dump($result);
 	echo "DB Error : SELECT boards";
@@ -112,13 +130,15 @@ db_destroy_conn($conn);
 	</main>
 	<button type="submit">나눔신청</button>
 	<section>
-		<a href=""><</a>
-		<a href="">1</a>
-		<a href="">2</a>
-		<a href="">3</a>
-		<a href="">4</a>
-		<a href="">5</a>
-		<a href="">></a>
+		<a href="/mini_test/src/list_test.php/?page=<?php echo $prev_page_num?>"><</a>
+		<?php 
+				for($i=1 ;$i<= $max_page_num; $i++){
+					$str = (int)$page_num===$i? "bk-a" : "";					
+			?>		
+			
+			<a  href="/mini_test/src/list_test.php/?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+			<?php	} ?>
+		<a href="/mini_test/src/list_test.php/?page=<?php echo $next_page_num?>">></a>
 	</section>
 </body>
 </html>
