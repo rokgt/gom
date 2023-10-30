@@ -61,7 +61,7 @@ a{
 section{
 	text-align: center;
 }
-button{
+.button{
 	position: relative;
 	left: 30%;
 	

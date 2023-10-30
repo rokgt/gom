@@ -32,11 +32,11 @@ if($next_page_num > $max_page_num){
 }
 
 // DB 조회시 사용할 데이터 배열
-$arr_param =[
-"list_cnt"=> $list_cnt
-,"offset" => $offset
-];
 
+$arr_param =[
+	"list_cnt"=> $list_cnt
+	,"offset" => $offset
+	];
 
 $result = db_select_boards_paging($conn,$arr_param);
 if(!$result){
@@ -44,6 +44,7 @@ if(!$result){
 	echo "DB Error : SELECT boards";
 	exit;
 }
+
  
 
 
@@ -115,7 +116,9 @@ db_destroy_conn($conn);
 					<?php echo $item["id"] ?>
 				</td>
 				<td>
-				<?php echo $item["title"] ?>
+					<a href="/mini_test/src/detail_test.php/?id=<?php echo $item["id"];?>">
+						<?php echo $item["title"] ?>
+					</a>
 				</td>
 				<td>
 				 <?php echo $item["create_at"] ?> 
@@ -128,7 +131,7 @@ db_destroy_conn($conn);
 			광고 기다리는중....
 		</div>
 	</main>
-	<button type="submit">나눔신청</button>
+	<a class=button href="/mini_test/src/insert_test.php">나눔신청</a>
 	<section>
 		<a href="/mini_test/src/list_test.php/?page=<?php echo $prev_page_num?>"><</a>
 		<?php 
