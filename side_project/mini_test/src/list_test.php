@@ -1,5 +1,6 @@
 <?php
 define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/mini_test/src/");
+define("FILE_HEADER",ROOT."header.php");
 require_once(ROOT."lib/lib_bd.php");
 
 $conn = null;
@@ -58,13 +59,13 @@ db_destroy_conn($conn);
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="test_common.css">
+	<link rel="stylesheet" href="/mini_test/src/test_common.css">
 	<title>Document</title>
 </head>
 <body>
-	<header>
-		<h1>소소한 나눔</h1>
-	</header>
+	<?php 
+		require_once(FILE_HEADER)
+	?>
 	<main>
 		<div class=side1>
 			<div>
@@ -116,7 +117,7 @@ db_destroy_conn($conn);
 					<?php echo $item["id"] ?>
 				</td>
 				<td>
-					<a href="/mini_test/src/detail_test.php/?id=<?php echo $item["id"];?>">
+					<a href="/mini_test/src/detail_test.php/?id=<?php echo $item["id"];?>&page=<?php echo $page_num;?>">
 						<?php echo $item["title"] ?>
 					</a>
 				</td>
@@ -127,7 +128,7 @@ db_destroy_conn($conn);
 			<?php } ?>
 						
 		</table>
-		<div>
+		<div class=side2>
 			광고 기다리는중....
 		</div>
 	</main>

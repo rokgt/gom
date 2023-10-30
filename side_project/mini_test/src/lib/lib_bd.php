@@ -80,21 +80,27 @@ function db_select_boards_cnt(&$conn) {
 function db_select_boards_id(&$conn,&$arr_param){
 	$sql=" SELECT "
 		."  	id "
-		."		title "
-		."		content "
-		."		create_at "
+		."		,title "
+		."		,content "
+		."		,create_at "
 		." FROM "
 		." 		boards "
 		." WHERE "
 		." 		id = :id "
 		;
-		$arr_ps=[
+		$arr_ps = [
 			":id"=>$arr_param["id"]
 		];
-		$stmt=$conn->prepare($sql);
+		try{
+			
+		$stmt = $conn->prepare($sql);
 		$stmt->execute($arr_ps);
 		$result=$stmt->fetchAll();
 		return $result;
+	}catch(Exception $e){
+		echo $e->getMessage();
+		return false;
+	}
 
 }
 

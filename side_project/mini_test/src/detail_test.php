@@ -1,18 +1,47 @@
 <?php
 define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/mini_test/src/");
+define("FILE_HEADER",ROOT."header.php");
 require_once(ROOT."lib/lib_bd.php");
-
+$id="";
 $conn = null;
 
-$id=$_GET["id"];
-var_dump($id);
+try {
+	
+	if(!isset($_GET['id'])|| $_GET["id"]=== "" ) {
+		throw new Exception("parameter Error : no id");
+	}
+	$id=$_GET["id"];
+	$page = $_GET["page"];
 
-$arr_param=[
-	"id"=>$id
-];
-$result=db_select_boards_id($conn,$arr_param);
-$item=$result[0];
-db_destroy_conn($conn);
+	if(!my_db_conn($conn)){
+		throw new Exception("DB Error : PDO Instance");
+	}
+	$arr_param=[
+		"id"=>$id
+	];
+	$result=db_select_boards_id($conn,$arr_param);
+	// var_dump($result);
+	if(!$result){
+		throw new Exception("DB Error : PDO Select_id");
+	}else if(!(count($result) === 1)){
+		throw new Exception("DB Error : PDO Select_id count,".count($result));
+	}
+	$item=$result[0];
+}catch(Exception $e){
+	echo $e->getMessage();
+	exit;
+}finally{
+	db_destroy_conn($conn);
+
+}
+
+
+
+
+
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -24,8 +53,10 @@ db_destroy_conn($conn);
 	<title>상세페이지</title>
 </head>
 <body>
+<?php 
+		require_once(FILE_HEADER)
+	?>
 
-<main>
 	<table>
 		<tr>
 			<th>
@@ -61,7 +92,9 @@ db_destroy_conn($conn);
 			</td>
 		</tr>
 	</table>
-</main>
+	<a href="#">수정</a>
+	<a href="/mini_test/src/list_test.php/?page=<?php echo $page;?>">취소</a>
+	<a href="#">삭제</a>
 	
 </body>
 </html>
