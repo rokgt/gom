@@ -31,9 +31,91 @@
 	// </xml>
 
 	// json
-	// {
+	//[ 
 	// 		data:{
 	//			id:56
 	//			,name: '홍길동'
 	// 		}
-	// }
+	//] 
+
+// const MY_URL = "https://picsum.photos/v2/list?page=2&limit=5"
+const BTN_API=document.querySelector('#btn-api');
+BTN_API.addEventListener('click',my_fetch);
+
+// function removeAllchild(div){
+//     while(div.hasChildNodes()){
+//         div.removeChild(div.firstChild);
+//     }
+// }
+
+function my_fetch(){
+	const INPUT_URL =document.querySelector('#input-url');
+
+	fetch(INPUT_URL.value.trim())
+	.then(response=>{
+		console.log(response)
+		if(response.status >=200 && response.status<300){
+			return response.json();
+		}else{
+			throw new Error('에러에러');
+		}
+		
+	})
+	.then(data=> makeImg(data))
+	.catch(error=>console.log(error));
+}
+function makeImg(data){
+	data.forEach(item=>{
+	const NEW_IMG =	document.createElement('img');
+	const DIV_IMG= document.querySelector('#div-img');
+	NEW_IMG.setAttribute('src',item.download_url);
+	NEW_IMG.style.width='200px';
+	NEW_IMG.style.height='200px';
+	DIV_IMG.appendChild(NEW_IMG);
+	});
+}
+// fetch(MY_URL)
+// .then( response => response.json())
+// .then( data=>makeImg(data))
+// .catch( error => console.log(error));
+
+// function makeImg(data){
+// 	data.forEach(item=>{
+// 	const NEW_IMG =	document.createElement('img');
+// 	NEW_IMG.setAttribute('src',item.download_url);
+// 	NEW_IMG.style.width='200px';
+// 	NEW_IMG.style.height='200px';
+// 	document.body.appendChild(NEW_IMG);
+// 	});
+// }
+const BTN_RMV= document.querySelector('#btn-rmv');
+BTN_RMV.addEventListener('click',imgClear);
+// -----------방법1-------------------
+// function imgClear(){
+// 	window.location.reload();
+// }
+// ---------------방법2---------------
+// function imgClear(){
+// 	const IMG = document.querySelectorAll('img');
+// 	for(let i =0; i < IMG.length; i++){
+// 		IMG[i].remove();
+// 	}
+// }
+// ---------------방법3---------------
+// function imgClear(){
+// 	const DIV_IMG = document.querySelectorAll('#div-img');
+	
+// 		DIV_IMG.remove();
+// }
+// ---------------방법4---------------
+function imgClear(){
+	const DIV_IMG = document.querySelector('#div-img');
+	
+		DIV_IMG.replaceChildren();
+}
+// ---------------방법5---------------
+function imgClear(){
+	const DIV_IMG = document.querySelector('#div-img');
+	
+	DIV_IMG.innerHTML = " ";
+}
