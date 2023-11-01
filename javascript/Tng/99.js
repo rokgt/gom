@@ -9,7 +9,7 @@ function call(){
 		if(response.status >=200 && response.status<300){
 			return response.json();
 		}else{
-			throw new Error('에러에러');
+			throw new Error('뭐 잘못됐나 확인해봐라');
 		}
 	})
 	.then(data=> makeImg(data))

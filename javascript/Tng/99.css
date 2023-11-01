@@ -1,4 +1,8 @@
-
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
 h1{
 background-color:black;
 color:white;
@@ -10,11 +14,12 @@ line-height: 200px;
 font-size: 4rem;
 }
 main{	
-	width: 1000px;
-	margin: 0 auto;
+	
+	margin:  auto;
 }
 
 .in-btn{
+	
 	text-align: center;
 }
 #input-txt{
@@ -25,7 +30,7 @@ main{
 	width: 80%;
 	margin: auto;
 	display: grid;
-	grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); 
+	grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); 
 	grid-gap: 5px;
 }
 
