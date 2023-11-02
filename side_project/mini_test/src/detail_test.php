@@ -12,12 +12,13 @@ try {
 	}
 	$id=$_GET["id"];
 	$page = $_GET["page"];
-
+	
 	if(!my_db_conn($conn)){
 		throw new Exception("DB Error : PDO Instance");
 	}
 	$arr_param=[
 		"id"=>$id
+		
 	];
 	$result=db_select_boards_id($conn,$arr_param);
 	// var_dump($result);
