@@ -2,9 +2,9 @@
 namespace router;
 //namespace router;
 // 사용할 컨트롤러들 지정
-use controller\UserController as UC; // 별칭을 줘도 되고 안줘도 된다 별칭주면 별칭으로 바꿔서 적어준다
+use controller\UserController; // 별칭을 줘도 되고 안줘도 된다 별칭주면 별칭으로 바꿔서 적어준다
 
-use controller\BoardController ;
+use controller\BoardController;
 // 라우터: 유저의 요청을 분석해서 해당 Controller로 연결해주는 크랠스
 class Router {
 //class Router{	
@@ -28,22 +28,27 @@ class Router {
 		//if($url === "user/login"){	
 			if($method === "GET"){
 			//if($method === "GET"){	
-				new UC ("loginGet");
+				new UserController("loginGet");
 				//new UC ("loginGet");
 			//}else{	
 			}else {
-				// new UserController ("loginPost");
+				 new UserController("loginPost");
 			}
 		}else if($url === "user/logout"){
 		// else if ($url === "user/logout"){	
 			if($method === "GET"){
 			//if($method=== "GET"){	
-			}	// new UserController ("logoutGet");
+				new UserController("logoutGet");
+			}else {// new UserController ("logoutGet");
+
+				
+			} 
+
 		}else if ($url === "user/regist"){
 		//} else if ($url === "user/regist"){				
 				if($method === "GET"){
 				//if($method === "GET")	
-					new UC ("registGet");
+					new UserController("registGet");
 					//new UC ("registGet")
 			}else {
 				
@@ -56,7 +61,9 @@ class Router {
 
 				new Boardcontroller("listGet");
 				//new Boardcontroller("listGet");
-			}
+			}else {
+				
+			} 
 		}
 		
 		// 없는 경로일 경우
