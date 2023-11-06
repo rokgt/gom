@@ -59,15 +59,20 @@ class Router {
 			if($method === "GET"){
 			//if($method ==="GET"){
 
-				new Boardcontroller("listGet");
+				new BoardController("listGet");
 				//new Boardcontroller("listGet");
-			}else {
+			}else if($url === "board/add"){
+				if($mothod === "GET") {
+
+				}else{
+					new BoardController("addPost");
+				}
 				
-			} 
+		 } 
 		}
 		
 		// 없는 경로일 경우
-		echo "이상한url:".url;
+		echo "이상한url:".$url;
 		exit();
 	}
 }
