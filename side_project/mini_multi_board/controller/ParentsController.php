@@ -11,6 +11,8 @@ class ParentsController {
 	// 비로그인 시 접속 불가능한URL리스트
 	private $arrNeedAuth = [
 		"board/list"
+		,"board/add"
+		,"board/detail"
 	];
 	public function __construct($action){
 		// 뷰관련 체크 접속 url셋팅

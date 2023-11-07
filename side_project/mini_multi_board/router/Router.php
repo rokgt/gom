@@ -50,26 +50,29 @@ class Router {
 				//if($method === "GET")	
 					new UserController("registGet");
 					//new UC ("registGet")
-			}else {
-				
+			}else{
+				new UserController("registPost");				
 			} 
 
 		}else if($url === "board/list"){
-		//}else if($url === "board/list"){
 			if($method === "GET"){
-			//if($method ==="GET"){
-
 				new BoardController("listGet");
-				//new Boardcontroller("listGet");
-			}else if($url === "board/add"){
-				if($mothod === "GET") {
+			}
+		}else if($url === "board/add"){
+			if($method === "GET") {
 
-				}else{
-					new BoardController("addPost");
-				}
+			}else{
+				new BoardController("addPost");
+			}
 				
-		 } 
-		}
+		 } else if ( $url==="board/detail"){
+		 	if($method === "GET") {
+				new BoardController("detailGet");
+
+		 	}
+		 }	
+		 
+
 		
 		// 없는 경로일 경우
 		echo "이상한url:".$url;

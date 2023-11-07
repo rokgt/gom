@@ -25,6 +25,7 @@
 			</div>
 			
 			<button type="submit" class="btn btn-dark">로그인</button>
+			<a href="/user/regist" class="btn btn-secondary float-end">회원가입</a>
 		  </form>
 	</main>
 
