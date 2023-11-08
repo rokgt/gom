@@ -63,5 +63,27 @@ class UserModel extends ParentsModel{
 				}
 				
 		}
+		public function getUserIdChk($u_id){
+			$sql =  " SELECT "
+					."		count(*) as cnt "
+					." FROM "
+					."		user "
+					." WHERE "
+					."		u_id = :u_id "
+					;
+			$prepare = [
+				":u_id" => $u_id
+			];
+			try{
+				$stmt=$this->conn->prepare($sql);
+				$stmt->execute($prepare);
+				$result=$stmt->fetchAll();
+				return $result;
+			}catch (Exception $e){
+				echo "UserModel->idChk Error: ".$e->getMassege();
+				exit();
+			}
+
+		}
 	
 }

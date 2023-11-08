@@ -18,6 +18,7 @@
 			  <label for="u_id" class="form-label">아이디</label>
 			  <input type="text" class="form-control" id="u_id" name="u_id">
 			  
+			  
 			</div>
 			<div class="mb-3">
 			  <label for="u_pw" class="form-label">비밀번호</label>

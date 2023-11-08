@@ -3,7 +3,7 @@
 namespace controller;//불러올 곳이 있는곳을 지정해주는것
 
 use model\UserModel;
-
+use lib\Validation;
 class UserController extends ParentsController{
 //class UserController expends ParentsController{	
 	protected function loginGet(){
@@ -14,11 +14,27 @@ class UserController extends ParentsController{
 
 	// 로그인 처리
 	protected function loginPost(){
+		// 유효성 체크
+		$inputData=[
+			"u_id" => $_POST["u_id"]
+			,"u_pw" => $_POST["u_pw"]
+		];
+		if(!Validation::userChk($inputData)) {
+			$this->arrErrorMsg = Validation::getArrErrorMsg();
+			return "view/login.php";
+			
+		 }
 		// ID, PW 설정(DB에서 사용할 데이터 가공)
 		$arrInput=[];
 		$arrInput ["u_id"] = $_POST["u_id"];
 		$arrInput ["u_pw"] = $this -> encryptionPassword($_POST["u_pw"]);
+		
 
+
+
+
+
+		// 유저정보 획득
 		$modelUser = new UserModel();
 		$resultUserInfo =$modelUser->getUserInfo($arrInput,true);
 
@@ -48,44 +64,34 @@ class UserController extends ParentsController{
 	// 회원가입 처리
 
 	protected function registPost(){
-		$u_id = $_POST["u_id"];
-		$u_pw = $_POST["u_pw"];
-		$u_pw_chk = $_POST["u_pw_chk"];
-		$u_name = $_POST["u_name"];
-		$arrAddUserInfo = [
-			"u_id"=> $u_id
-			,"u_pw"=> $this->encryptionPassword($u_pw)
-			,"u_name"=> $u_name
+		$inputData=[
+			"u_id" => $_POST["u_id"]
+			,"u_pw" => $_POST["u_pw"]
+			,"u_pw_chk" => $_POST["u_pw_chk"]
+			,"u_name" => $_POST["u_name"]
 		];
+		// var_dump($inputData);
+		
+		$arrAddUserInfo = [
+			"u_id"=> $_POST["u_id"]
+			,"u_pw"=> $this->encryptionPassword($_POST["u_pw"])
+			,"u_name"=> $_POST["u_name"]
+		];
+		// var_dump($arrAddUserInfo);
+		// TODO:ID중복성체크
 
-		$patternId = "/^[a-zA-Z0-9]{8,20}$/"; 
-		$patternPw= "/^[a-zA-Z0-9!@]{8,20}$/";
-		$patternName= "/^[a-zA-Z0-9가-힣]{2,50}$/u"; // 꺽쇠 시작 달러 마침 중괄호 글자수 제한 대괄호안에 방식으로 할거다.
-
-		if(preg_match($patternId, $u_id, $match) === 0){
-			// ID에러처리
-			$this->arrErrorMsg[] = "아이디는 영어대소문자와 숫자로 8~20자로 입력해 주세요.";
-		}
-		if(preg_match($patternPw, $u_pw, $match) === 0){
-			// PW에러처리
-			$this->arrErrorMsg[] = "비밀번호는 영어대소문자와 숫자,!,@로 8~20자로 입력해 주세요.";
-		}
-		if( $u_pw !== $u_pw_chk){
-			// PW에러처리
-			$this->arrErrorMsg[] = "비밀번호와 비밀번호확인이 동일하지 않습니다.";
-		}
-		if(preg_match($patternName, $u_name, $match) === 0){
-			// NAME에러처리
-			$this->arrErrorMsg[] = "이름는 영어대소문자와 숫자로 2~50자로 입력해 주세요.";
-		}
 		// TODO:ID중복성체크
 
 
 		// 유효성 체크 실패
-		if(count($this->arrErrorMsg) > 0) {
+		if(!Validation::userChk($inputData)) {
+			$this->arrErrorMsg = Validation::getArrErrorMsg();
 			return "view/regist.php";
 			
-		}
+		 }
+		//  var_dump($inputData);
+
+		
 
 		// 인서트 처리
 		$userModel = new UserModel();
@@ -100,6 +106,74 @@ class UserController extends ParentsController{
 		$userModel->destroy();
 		return "Location: /user/login";
 	}
+
+	// 아이디체크
+	// 내가 한것
+	// protected function idChkGet(){
+	// 	$u_id= $_GET["u_id"];
+
+	// 	$arrUserIdChk = [
+	// 		"u_id" => $u_id
+	// 	];
+
+	// 	$userModel= new UserModel();
+	// 	$result = $userModel->getUserIdChk($u_id);
+
+	// 	// if($result ===  )
+	// 	// 레스폰스 데이터 작성
+	// 	$arrTmp = [
+	// 		"errflg" =>"0"
+	// 		,"msg" => ""
+	// 		,"data"=>
+	// 			$result[0]
+			
+	// 	];
+	// 	$response = json_encode($arrTmp);// 제이슨 형태로 바꾼다
+
+	// 	// response처리
+	// 	header('Content-type: application/json'); // 오는형식이 json이라고 알려준다
+	// 	echo $response;
+	// 	exit();
+	// }
+
+	// 선생님이 하신것
+	protected function idChkPost(){
+		$errorFlg="0";
+		$errorMsg="";
+		$inputData = [
+			"u_id"=> $_POST["u_id"]
+		];
+		// var_dump($inputData);
+		// exit;
+		// 유효성체크
+		if(!Validation::userChk($inputData)) {
+			$errorFlg="1";
+			$errorMsg = Validation::getArrErrorMsg()[0];
+					
+		 }
+
+		 $userModel = new UserModel();
+		 $result = $userModel->getUserInfo($inputData);
+		 $userModel->destroy();
+
+		 if(count($result) > 0){
+			$errorFlg = "1";
+			$errorMsg = "중복된 아이디입니다.";
+		 }
+		 
+		//response처리
+		$response=[
+			"errflg" => $errorFlg
+			,"msg" => $errorMsg
+		];
+		 header('Content-type: application/json');
+		echo json_encode($response);
+		exit();
+	}
+
+
+
+	
 
 	// 비밀번호 암호화
 	private function encryptionPassword($pw){

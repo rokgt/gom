@@ -51,3 +51,54 @@ function closeDetailModal(){
 	MODAL.classList.remove('show');
 	MODAL.style = 'display: none;';
 }
+//아이디 확인
+
+
+// 내가 한것
+// function idChk(){
+// 	// const IDCHK=document.querySelector('#idChk');
+// 	// 	  IDCHK.addEventListener('click',);
+// 	const INPUT_ID = document.querySelector('#u_id');
+// 	const URL='/user/idchk?u_id='+INPUT_ID.value;
+// 	fetch(URL)
+// 	.then(response=>response.json())
+// 	.then(chk=>{
+// 		let rok = chk.data.cnt === 0 ? '됨' : '안됨';
+// 		window.alert(rok);
+		
+		 
+// 	})
+
+
+// }
+// 선생님이 하신것 POST로 fetch하는 방법
+// id 중복 체크 처리
+function idChk(){
+	const ID_CHK_MSG = document.getElementById('idChkMsg');
+	ID_CHK_MSG.innerHTML="";//이전에 있을지 모르는 데이터 삭제용
+	const INPUT_ID= document.getElementById('u_id');
+	//const INPUT_ID= document.getElementById('u_id').value; 이렇게 가져와도 된다
+	const URL = '/user/idchk';
+	// 새로운 폼데이타
+	const formData= new FormData();
+
+	formData.append("u_id", INPUT_ID.value);//유저가 입력한 아이디 폼에 셋팅
+
+	const HEADER = {
+		method: "POST"
+		,body:formData		
+	};
+
+	fetch(URL, HEADER)
+	.then( response=> response.json())
+	.then(data=>{
+		if(data.errflg === "0"){
+			ID_CHK_MSG.innerHTML = "사용 가능한 아이디입니다."
+			ID_CHK_MSG.classList ='text-success';
+		}else {
+			ID_CHK_MSG.innerHTML = "사용 할수 없는 아이디입니다."
+			ID_CHK_MSG.classList ='text-danger';
+		}
+	})
+	.catch( error => console.log(error));
+}

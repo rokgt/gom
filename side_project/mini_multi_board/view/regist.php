@@ -10,13 +10,16 @@
 	<?php require_once("view/inc/header.php"); ?>
 
 	<main class="d-flex justify-content-center align-items-center h-75">
-		<form style="width: 300px;" action="/user/regist" method="POST">
+		<form style="width: 350px;" action="/user/regist" method="POST">
 			<div id="errorMsg" class="form-text text-danger">
 				<?php echo count($this->arrErrorMsg) > 0 ? implode("<br>", $this->arrErrorMsg) : "" ?>
 			</div>
 			<div class="mb-3">
 			  <label for="u_id" class="form-label">아이디</label>
 			  <input type="text" class="form-control" id="u_id" name="u_id" minlength="8" maxlength="20">
+			  <br>
+			  <button type="button" onclick="idChk(); return false;" >아이디확인</button>
+			  <span id="idChkMsg"></span>
 			  
 			</div>
 			<div class="mb-3">
@@ -45,6 +48,7 @@
 
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<script src="/view/js/common.js"></script>
 </body>
 </html>
 

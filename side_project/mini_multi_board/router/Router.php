@@ -70,7 +70,11 @@ class Router {
 				new BoardController("detailGet");
 
 		 	}
-		 }	
+		 }	else if ($url=== "user/idchk"){
+			if($method === "POST"){
+				new UserController("idChkPost");
+			}
+		 }
 		 
 
 		
