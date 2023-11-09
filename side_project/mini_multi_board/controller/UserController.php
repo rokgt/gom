@@ -78,7 +78,7 @@ class UserController extends ParentsController{
 			,"u_name"=> $_POST["u_name"]
 		];
 		// var_dump($arrAddUserInfo);
-		// TODO:ID중복성체크
+	
 
 		// TODO:ID중복성체크
 

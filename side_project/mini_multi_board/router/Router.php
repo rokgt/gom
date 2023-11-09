@@ -74,6 +74,10 @@ class Router {
 			if($method === "POST"){
 				new UserController("idChkPost");
 			}
+		 }else if ($url === "board/remove"){
+			if($method ==="GET"){
+				new BoardController("removeGet");
+			}
 		 }
 		 
 

@@ -23,7 +23,7 @@
 
 	<main>
 		<?foreach($this->arrBoardInfo as $item){?>
-		<div class="card" >
+		<div class="card" id="card<?php echo $item["id"]?>" >
 			<img src="<?php echo isset($item["b_img"]) ? "/"._PATH_USERIMG.$item["b_img"] : "";?>" class="card-img-top" alt="이미지없음">
 			<div class="card-body">
 			  <h5 class="card-title"><?php echo $item["b_title"]?></h5>
@@ -58,10 +58,16 @@
 			<br>
 			<img id="b_img"src="" class="card-img-top" alt="">
 		</div>
-		<div class="modal-footer">
-		  <button type="button" onclick="closeDetailModal(); return false;" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-		  
-		</div>
+		<div class="modal_del">
+			<div class="modal-footer">
+				<!-- <span id="del_id" class="d-none"></span> -->
+				<input type="hidden" id = "del_id" value="">
+				<button id="btn_del" type="button" onclick="deleteCard(); return false;" class="btn btn-secondary" data-bs-dismiss="modal">삭제</button>
+				</div>
+				<div class="modal-footer">
+				<button type="button" onclick="closeDetailModal(); return false;" class="btn btn-secondary " data-bs-dismiss="modal">닫기</button>
+			</div>
+		</div>	
 	  </div>
 	</div>
   </div>

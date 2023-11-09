@@ -24,3 +24,7 @@ main{
 	width: 500px;
 	height: 500px;
 }
+.modal_del{
+	display: flex;
+	justify-content: space-between;
+}
