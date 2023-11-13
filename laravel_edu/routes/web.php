@@ -119,3 +119,20 @@ use App\Http\Controllers\TaskController;
 // 모든 액션 메소드를 자동으로 생성
 //php artisan make:controller 컨트롤러명(TaskController) --resource
 Route::resource('/task', TaskController::class);
+
+Route::get('/child1', function(){
+
+    $arr=[
+        'name' => '홍길동'
+        ,'age' => 130
+        ,'gender' => '여자'
+    ];
+    $arr2=[];
+
+    return view('child1')->with('gender', '1')->with('data',$arr)->with('data2',$arr2);
+});
+
+Route::get('/child2', function(){
+    return view('child2');
+});
+
