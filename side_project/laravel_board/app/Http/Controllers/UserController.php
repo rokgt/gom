@@ -23,17 +23,17 @@ class UserController extends Controller
     return view('login');
  }
  public function loginpost(Request $request){
-   $validator = Validator::make(
-      $request->only('email','password', 'passwordchk','name')
-      ,[
-         'email'       => 'required|email|max:50'         
-         ,'password'   => 'required'
-      ]
-   );
+//    $validator = Validator::make(
+//       $request->only('email','password', 'passwordchk','name')
+//       ,[
+//          'email'       => 'required|email|max:50'         
+//          ,'password'   => 'required'
+//       ]
+//    );
    
-   if($validator->fails()){
-      return view('login')->with('errors',$validator->errors());
- }
+//    if($validator->fails()){
+//       return view('login')->with('errors',$validator->errors());
+//  }
 
 //  유저 정보 습득
    $result=User::where('email',$request->email)->first();
@@ -61,21 +61,21 @@ class UserController extends Controller
     }
  public function registrationpost(Request $request){   
 //유효성 검사
-$validator = Validator::make(
-   $request->only('email','password', 'passwordchk','name')
-   ,[
-      'email'       => 'required|email|max:50'
-      ,'name'       => 'required|regex:/^[a-zA-Z가-힣]+$/|min:2|max:50'
-      ,'password'   => 'same:passwordchk|required'
-   ]
-);
+// $validator = Validator::make(
+//    $request->only('email','password', 'passwordchk','name')
+//    ,[
+//       'email'       => 'required|email|max:50'
+//       ,'name'       => 'required|regex:/^[a-zA-Z가-힣]+$/|min:2|max:50'
+//       ,'password'   => 'same:passwordchk|required'
+//    ]
+// );
 
-// 유효성 검사 실패시 처리
+// // 유효성 검사 실패시 처리
 
-if($validator->fails()){
-   return view('registration')->with('errors',$validator->errors());
-   // return view('registration')->withErrors($validator->errors());
-}
+// if($validator->fails()){
+//    return view('registration')->with('errors',$validator->errors());
+//    // return view('registration')->withErrors($validator->errors());
+// }
 
 // var_dump($validator->errors());
 

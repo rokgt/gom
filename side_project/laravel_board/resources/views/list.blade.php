@@ -4,6 +4,8 @@
 
 @section('main')
 
+	<div><a href="{{route('board.create')}}">작성</a></div>
+
 	@forelse ($data as $item)
 		
 	
