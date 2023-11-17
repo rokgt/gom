@@ -93,7 +93,9 @@ class BoardController extends Controller
      */
     public function edit($id)
     {
-        //
+        $result=Board::find($id);
+        return view('edit')->with('data',$result);
+        
     }
 
     /**
@@ -105,7 +107,16 @@ class BoardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $result=Board::find($id);
+        //선생님이 하신것
+        // $result->b_title = $request->b_title;
+        // $result->b_content = $request->b_content;
+        // 내가 한것
+        // $result->update($request->all());
+        // 다시 해본것
+        $result->update($request->only('b_title','b_content'));
+        
+        return redirect()->route('board.show',['board'=>$result->b_id]);
     }
 
     /**

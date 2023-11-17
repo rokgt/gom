@@ -1,53 +1,31 @@
 @extends('layout.layout')
 
-@section('title','Detail')
+@section('title', 'Detail')
 
 @section('main')
-<main class="d-flex justify-content-center align-items-center h-75">
-	<div class="mb-3">
-		<p>글번호</p>
-		<p>{{$data->b_id}}</p>
-
+<main>
+	<div class="card">
+		<div class="card-header">
+			<p>{{$data->b_id}}</p>
+			<h5 class="card-title">{{$data->b_title}}</h5>
+			<p>{{'조회수 : '.$data->b_hits}}</p>
+		</div>
+		<div class="card-body">
+			<p class="card-text">{{$data->b_content}}</p>
+			<hr>
+			<p>{{'작성일 : '.$data->created_at}}</p>
+			<p>{{'수정일 : '.$data->updated_at}}</p>
+		</div>
+		<div class="card-footer">
+			
+			<form action="{{route('board.destroy', ['board' => $data->b_id])}}" method="post">
+				@csrf
+				@method('DELETE')
+				<a href="{{route('board.edit',['board'=>$data->b_id])}}">수정</a>
+				<button type="submit" class="btn btn-danger">삭제</button>
+				<a href="{{route('board.index')}}">취소</a>
+			</form>
+		</div>
 	</div>
-
-	<div class="mb-3">
-			<p>제목</p>
-			<p>{{$data->b_title}}</p>
-
-	</div>
-
-	<div class="mb-3">
-		<p>내용</p>
-		<p>{{$data->b_content}}</p>
-	</div>
-
-	<div class="mb-3">
-		<p>조회수</p>
-		<p>{{$data->b_hits}}</p>
-	</div>
-
-	<div class="mb-3">
-		<p>작성일</p>
-		<p>{{$data->created_at}}</p>
-	</div>
-	
-	<div class="mb-3">
-		<p>수정일</p>
-		<p>{{$data->updated_at}}</p>
-	</div>
-	<form action="{{route('board.destroy',['board' => $data->b_id])}}" method="post">
-		@csrf
-		@method('delete')		
-		<button type="submit" class="btn btn-dark">삭제</button>
-	</form>
 </main>
-
-
-
-
-
-
-
-
-
 @endsection
