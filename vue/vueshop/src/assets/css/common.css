@@ -44,3 +44,11 @@
 .modalAni-leave-to{
 	transform: translateX(1000px);
 }  
+.discount{
+	background-color: aquamarine;
+	padding: 20px;
+	margin: 10px;
+	border-radius: 10px;
+	font-size: 1.5rem;
+	color: crimson;
+}
