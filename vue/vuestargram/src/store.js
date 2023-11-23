@@ -9,6 +9,7 @@ const store = createStore({
             imgURL:'',//작성탭 표시용 이미지 URL저장용
             postfileData:null,//글 작성 파일데이터 저장용
             lastBoardId:0,
+            flgBtnMoreView: true,//더보기버튼 활성여부 플래그
         }
     },
 
@@ -16,7 +17,11 @@ const store = createStore({
     mutations:{
         setBoardList(state,data){
             state.boardData=data;
-            state.lastBoardId=data[data.length-1].id;
+            this.commit('setLastBoardId',data[data.length-1].id);
+        },
+        // 마지막 게시글 번호 셋팅용
+        setLastBoardId(state,num){
+            state.lastBoardId=num;
         },
         //탭 UI셋팅요
         setFlgTapUI(state,num){
@@ -37,6 +42,14 @@ const store = createStore({
         setClearAddData(state){
             state.imgURL='';
             state.postfileData=null;
+        },
+        // 더보기 데이터 추가
+        setAddBoardData(state,data){
+            state.boardData.push(data);
+        },
+        //더보기 버튼 활성화
+        setFlgBtnMoreView(state,boo){
+            state.flgBtnMoreView=boo;
         }
     },
 
@@ -53,7 +66,7 @@ const store = createStore({
             axios.get(url,header)
             .then(res=>{
                 context.commit('setBoardList',res.data);
-                res.data
+                
             })
             .catch(err=>{
                 console.log(err);
@@ -86,20 +99,25 @@ const store = createStore({
             console.log(err);
         })
     },
-    actionMorelist(context){
-        const url ='http://112.222.157.156:6006/api/boards';
+    // 더보기
+    actionGetBoardItem(context){
+        const url ='http://112.222.157.156:6006/api/boards/'+ context.state.lastBoardId;
         const header={
             headers:{
                 'Authorization':'Bearer meerkat'
             }};
-            axios.get(url,header)
-            .then(res=>{
-                context.commit('setBoardList',res.data);
-                res.data
-            })
-            .catch(err=>{
-                console.log(err);
-            })
+        axios.get(url,header)
+        .then(res=>{
+            if(res.data){
+            context.commit('setAddBoardData',res.data);
+            context.commit('setLastBoardId',res.data.id);
+            }else{
+                context.commit('setFlgBtnMoreView',false);
+            }
+        })
+        .catch(err=>{
+            console.log(err.response.data);
+        })
 
     }
      },

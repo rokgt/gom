@@ -13,7 +13,7 @@
 
 <!-- 더보기 -->
 
-<button @click="moreList">더보기</button>
+<button @click="moreList" v-if="$store.state.flgBtnMoreView &&$store.state.flgTapUI ===0">더보기</button>
 
 <!-- 푸터 -->
 
@@ -61,7 +61,7 @@ export default {
 
     },
     moreList(){
-      this.$store.dispatch('actionMoreList')
+      this.$store.dispatch('actionGetBoardItem')
     }
   },
   components:{
