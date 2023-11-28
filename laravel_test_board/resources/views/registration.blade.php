@@ -3,11 +3,11 @@
 @section('main')
 <main class="d-flex justify-content-center align-items-center h-75">
 		
-		<form method="POST" style="width: 300px;" action="{{route('user.login.post')}}">
-			
+		<form method="POST" style="width: 300px;" action="{{route('user.regist.post')}}">
+			@include('layout.errorlayout')
 			@csrf
 			
-			</div>
+			
 			<div class="mb-3">
 			  <label for="email" class="form-label">E-MAIL</label>
 			  <input type="email" class="form-control" id="email" name="email">

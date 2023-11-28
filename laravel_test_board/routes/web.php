@@ -20,6 +20,8 @@ Route::get('/', function () {
 });
 Route::get('/user/login',[UserController::class, 'loginget'])->name('user.login.get');
 Route::post('/user/login',[UserController::class, 'loginpost'])->name('user.login.post');
-Route::get('/user/registeration',[UserController::class, 'registeget'])->name('user.registe.get');
-Route::post('/user/registeration',[UserController::class, 'registepost'])->name('user.registe.post');
+Route::get('/user/registration',[UserController::class, 'registget'])->name('user.regist.get');
+Route::post('/user/registration',[UserController::class, 'registpost'])->name('user.regist.post');
+
+Route::resource('/board',BoardController::class);
 
