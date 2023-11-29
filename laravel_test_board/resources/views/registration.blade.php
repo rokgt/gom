@@ -26,7 +26,7 @@
 			  <input type="text" class="form-control" id="name" name="name">
 			</div>
 			
-            <a class="btn btn-secondary" href="{{route('user.login.get')}}">취소</a>
+            <a class="btn btn-secondary" href="{{url()->previous()}}">취소</a>
 			<button type="submit" class="btn btn-dark float-end">회원가입</button>
 		  </form>
 	</main>

@@ -7,10 +7,18 @@ use App\Models\User;
 use Illuminate\support\facades\Hash;
 use Illuminate\support\facades\Validator; 
 use Illuminate\support\facades\Auth;
+use Illuminate\support\facades\Session;
 
 class UserController extends Controller
 {
+    public function mainpageget(){
+        return view('mainpage');
+    }
     public function loginget(){
+        
+         if(Auth::check()){
+         return redirect()->route('board.index');
+         }
         return view('login');
     }
 
@@ -26,38 +34,23 @@ class UserController extends Controller
                 return view('login')->with('errors',$validator->errors());
             }
 
-            // $result = User::where('email',$request->email)->first();
-            // if(!$result || !(Hash::check($request->password,$result->password))){
-            //     $errorMsg='잘못쳤다 다시 쳐라';
-            //     return view('login')->withErrors($errorMsg);
-            // }           
+            $result = User::where('email',$request->email)->first();
+            if(!$result || !(Hash::check($request->password,$result->password))){
+                $errorMsg='잘못쳤다 다시 쳐라';
+                return view('login')->withErrors($errorMsg);
+            }           
 
-            // Auth::login($result);
-            // if(Auth::check()){
-            //     session($result->only('id'));
-            // }else {
-            //     $errorMsg = '인증에러가 발생했습니다';
-            //     return view('login')->withErrors($errorMsg);
-            // }
-            $result=User::where('email',$request->email)->first();
-   if(!$result || !(Hash::check($request->password,$result->password))){
-      $errorMsg = '아이디와 비밀번호를 다시 확인해 주세요';
-      return view('login')->withErrors($errorMsg);
-   }
-
-   // 유저인증 작업
-   Auth::login($result);
-   if(Auth::check()){
-      session($result->only('id'));
-   }else{
-         $errorMsg = '인증에러가 발생했습니다';
-         return view('login')->withErrors($errorMsg);      
-   }
-            
-            
+            Auth::login($result);
+            if(Auth::check()){
+                session($result->only('id'));
+            }else {
+                $errorMsg = '인증에러!';
+                return view('login')->withErrors($errorMsg);
+            }
+                
 
 
-        return view('list');
+        return redirect()->route('board.index');
     }
 
 
@@ -89,74 +82,10 @@ class UserController extends Controller
         $result = User::create($data);
         return redirect()->route('user.login.get');
     }
-    public function index()
-    {
-        //
+    public function logoutget(){
+        session::flush();
+        Auth::logout();
+        return redirect()->route('user.login.get');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-}
+    
+}   
