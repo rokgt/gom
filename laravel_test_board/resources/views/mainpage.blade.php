@@ -1,8 +1,10 @@
 @extends('layout.layout')
 @section('title', 'mainpage')
 @section('main')
-        <a href="{{route('user.regist.get')}}" class="btn btn-dark float-end" role="button"  >회원가입</a>
-	    <a href="{{route('user.logout.get')}}" class="btn btn-dark" role="button" >로그인</a>
+@guest
+<a href="{{route('user.regist.get')}}" class="btn btn-dark float-end" role="button"  >회원가입</a>
+<a href="{{route('user.logout.get')}}" class="btn btn-dark" role="button" >로그인</a>
+@endguest
 <main class="d-flex justify-content-center h-75">
 
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">

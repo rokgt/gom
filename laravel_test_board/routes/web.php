@@ -18,7 +18,8 @@ use App\Http\Controllers\BoardController;
 Route::get('/', function () {
     return view('mainpage');
 });
-
+Route::get('/freelist',[BoardController::class,'freelistget'])->name('freelist.get');
+Route::get('/questionlist',[BoardController::class,'questionlistget'])->name('questionlist.get');
 Route::get('/mainpage',[UserController::class, 'mainpageget'])->name('mainpage.get');
 Route::get('/user/login',[UserController::class, 'loginget'])->name('user.login.get');
 Route::post('/user/login',[UserController::class, 'loginpost'])->name('user.login.post');
@@ -27,5 +28,5 @@ Route::post('/user/registration',[UserController::class, 'registpost'])->name('u
 Route::get('/user/logout',[UserController::class, 'logoutget'])->name('user.logout.get');
 
 
-Route::resource('/board',BoardController::class);
+Route::middleware('auth')->resource('/board',BoardController::class);
 

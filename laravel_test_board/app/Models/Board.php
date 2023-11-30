@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Board extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'u_id';
+
+    protected $fillable =[
+        'u_title'
+        ,'u_content'
+    ];
 }

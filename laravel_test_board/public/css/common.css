@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+}
+section{
+		width: 75%;	
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		margin: 0 auto;
+		padding: 54px 0 71px;
+		background-color: #f0f0f0
+	}
+section>div{
+	width: 85%;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+	gap: 1rem;
+	padding-bottom: 70px;
+}
+textarea{
+	vertical-align: top;	
+	resize: none;
+}
+main{
+	width: 85%;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(2500px,1fr));
+	gap: 1rem;
+	padding-bottom: 70px;
+}
