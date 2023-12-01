@@ -53,6 +53,10 @@ class BoardController extends Controller
     public function store(Request $request)
     {
         $arrData=$request->only('u_title','u_content');
+        if($request->hasFile('img')){
+           $imagePath = $request->file('img')->store('public/img');
+           $arrData['image_path']=$imagePath;
+        }
         $result=Board::create($arrData);
         return redirect()->route('freelist.get');
     }
@@ -78,7 +82,8 @@ class BoardController extends Controller
      */
     public function edit($id)
     {
-        //
+        $result=Board::find($id);
+        return view('edit')->with('data',$result);
     }
 
     /**
@@ -90,7 +95,9 @@ class BoardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $result = Board::find($id);
+        $result->update($request->only('u_title','u_content'));
+        return redirect()-> route('board.show',['board'=> $result->u_id]);
     }
 
     /**
@@ -101,6 +108,9 @@ class BoardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Board::find($id)->delete();
+        Board::destroy($id);
+        return redirect()-> route('freelist.get');
+
     }
 }

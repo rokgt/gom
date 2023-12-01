@@ -16,16 +16,23 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="/img/gundam20th.jpg" class="d-block w-100" alt="">
+    <a href="https://www.bnkrmall.co.kr/board/hobby_content.do?idx=89">
+      <img src="/img/gundam20th.jpg" class="d-block w-100" alt=""></a>
     </div>
     <div class="carousel-item">
-      <img src="/img/gundamRX-78.jpg" class="d-block w-100" alt="...">
+    <a href="https://www.shinhancard.com/pconts/html/benefit/event/1223761_2239.html">
+        <img src="/img/gundamRX-78.jpg" class="d-block w-100" alt="slide2">
+      </a>
     </div>
     <div class="carousel-item">
-      <img src="/img/MGSD2_1280x720_kr.jpg" class="d-block w-100" alt="...">
+    <a href="https://kr.gundam.info/content/mgsd/002/">
+        <img src="/img/MGSD2_1280x720_kr.jpg" class="d-block w-100" alt="slide3">
+      </a>
     </div>
     <div class="carousel-item">
-      <img src="/img/20주년어스트레이_건담인포_1280x720px.jpg" class="d-block w-100" alt="...">
+    <a href="{!! 'https://www.bnkrmall.co.kr/board/hobby_content.do?idx=106' !!}">
+        <img src="/img/20주년어스트레이_건담인포_1280x720px.jpg" class="d-block w-100" alt="slide4" >
+      </a>
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

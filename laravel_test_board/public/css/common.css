@@ -21,6 +21,7 @@ section>div{
 	padding-bottom: 70px;
 }
 textarea{
+	width: 100%;
 	vertical-align: top;	
 	resize: none;
 }

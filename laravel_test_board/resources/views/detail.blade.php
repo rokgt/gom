@@ -5,6 +5,14 @@
 @section('main')
 
 <main>
+    <p>이미지 경로: {{ asset('storage/' . $data->image_path) }}</p>
+
+    @if ($data->image_path)
+        <div>
+            
+            <img src="{{ asset('storage/' . $data->image_path) }}" alt="게시글 이미지">
+        </div>
+    @endif
 	
 	<div class="mb-3">
 		<p>글번호</p>
@@ -29,8 +37,15 @@
 			
 	
 		 
-	</main>
-    <a class="btn btn-secondary" href="{{url()->previous()}}">취소</a>
-	<button type="submit" class="btn btn-dark float-end">수정</button>
-
+	
+    <div class="card-footer">
+    <form action="{{route('board.destroy',['board'=>$data->u_id])}}" method = "POST">
+        @csrf
+        @method('DELETE')
+    <a class="btn btn-secondary" href="{{url()->previous()}}">취소</a>	
+    <button type="submit" class="btn btn-danger">삭제</button>
+    <a href="{{route('board.edit',['board'=>$data->u_id])}}" class=" btn btn-dark">수정</a>
+    </form>
+    </div>
+    </main>
 @endsection

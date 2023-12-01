@@ -5,14 +5,14 @@
 @section('main')
 <main class="d-flex justify-content-center align-items-center h-75">
 		
-		<form method="POST" style="width: 300px;" action="{{route('board.store')}}">
+		<form method="POST" style="width: 600px;" action="{{route('board.store')}}" enctype="multipart/form-data">
 			@include('layout.errorlayout')
 			@csrf
             <label for="board">게시판 선택:</label>
-            <select name="board" id="board">
-                <option value="freelist">자유게시판</option>
-                <option value="questionlist">질문 게시판</option>
-            </select>
+				<select name="board" id="board">
+					<option value="freelist">자유게시판</option>
+					<option value="questionlist">질문 게시판</option>
+				</select>
 			
 			
 			<div class="mb-3">
@@ -22,12 +22,18 @@
 			</div>
 			
             <div class="mb-3">
-			<label for="u_content" class="form-label">내용</label>			  
-            <textarea name="u_content" id=u_content"" cols="30" rows="10"></textarea>
+				<label for="u_content" class="form-label">내용</label>			  
+				<textarea name="u_content" id="u_content" ></textarea>
 			</div>
 			
             <a class="btn btn-secondary" href="{{url()->previous()}}">취소</a>
+			
 			<button type="submit" class="btn btn-dark float-end">작성완료</button>
+			<div class="form-group">
+    			<label for="img"></label>
+    			<input type="file" name="img" class="form-control-file">
+			</div>
+			
 		  </form>
 	</main>
 
