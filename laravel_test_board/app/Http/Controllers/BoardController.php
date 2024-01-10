@@ -41,7 +41,7 @@ class BoardController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('insert');
     }
 
     /**

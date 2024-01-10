@@ -1,0 +1,15 @@
+public function boardcategoryget($categoryId) {
+    Log::debug('***** boardcategoryget Start *****');
+    Log::debug('categoryId : '.$categoryId);
+    $category_board = Board::where('category_id', $categoryId)->orderby('board_id', 'desc')->get();
+
+    $result_category_id = Category::orderby('category_id', 'asc')->get();
+
+    $category_name = Category::where('category_id', $categoryId)->get();
+    $result = [$category_board, $result_category_id, $category_name];
+    Log::debug('result_category_id : '.$result_category_id);
+    Log::debug('category_name : '.$category_name);
+    Log::debug('***** boardcategoryget End *****');
+
+    return view('categoryboard')->with('data', $result);
+}

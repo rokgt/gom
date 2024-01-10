@@ -1,0 +1,243 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>image preview</title>
+<style>
+.container {
+	margin: 30px auto;
+	width: 500px;
+}
+
+#image_zone {
+  width: 660px;
+  min-height: 150px;
+  padding: 10px;
+  border: 1px dotted #00f;
+  margin-top: 5px;
+}
+
+#image_zone:empty:before {
+  content: attr(data-placeholder);
+  color: #999;
+  font-size: .9em;
+}
+
+.image-box {
+	display: inline-block;
+	position: relative;
+	width: 150px; height: 120px;
+	margin: 5px;
+	border: 1px solid #00f;
+	z-index: 1;
+}
+
+.image {
+	width: 100%; height: 100%;
+	z-index: none;
+}
+
+.image-btn {
+	/* width:30px; height:30px; */
+	position: absolute;
+	font-size: 15px;
+	right: 0px;
+	bottom: 0px;
+	z-index: 999;
+	background-color:rgba(255,255,255,0.1);
+	color: #f00;
+	border: 1px solid #333;
+	cursor: pointer;
+	padding: 2px 5px;
+}
+</style>
+</head>
+<body>
+
+<div class='container'>
+	<h3>이미지 미리보기</h3>
+	<form name="frm">
+		<input type='file' name='selectFile' id='selectFile' multiple='multiple'>
+		<div id='image_zone'
+			data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
+	</form>
+</div>
+
+<script type="text/javascript">
+( /* vid : 이미지들이 들어갈 위치 id, fid : file 태그 id */
+	imageView = function imageView(vid, fid) {
+		var imageZone = document.getElementById(vid);
+		var selectFile = document.getElementById(fid);
+		var sel_files = [];
+    
+		selectFile.onchange = function(e){
+			var files = e.target.files;
+			var fileArr = Array.prototype.slice.call(files) // begin부터 end-1 인덱스 까지 요소를 얕은 복사하여 새로운 배열 객체로 반환
+			for(f of fileArr) {
+				imageLoader(f);
+			}
+		}; 
+  
+		// 탐색기에서 드래그앤 드롭 사용
+		
+		// 드롭 대상 위로 지나갈 때
+		imageZone.addEventListener('dragenter', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+		}, false);
+    	
+		// 드롭 대상위로 지나갈때
+		imageZone.addEventListener('dragover', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+		}, false);
+  		
+		// 드래그 할때
+		imageZone.addEventListener('drop', function(e) {
+			var files = {};
+			e.preventDefault();
+			e.stopPropagation();
+			var dt = e.dataTransfer;
+			files = dt.files;
+			for(f of files) {
+				imageLoader(f);
+			}
+		}, false);
+    
+	    // 첨부된 이미지를 배열에 넣고 미리보기
+		var imageLoader = function(file){
+			sel_files.push(file);
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				let img = document.createElement('img')
+				img.classList.add("image"); // class 추가
+				img.src = e.target.result;
+				imageZone.appendChild(makeDiv(img, file));
+			};
+	      
+			var dt = new DataTransfer();
+			for(f in sel_files) {
+				var file = sel_files[f];
+				dt.items.add(file);
+			}
+			selectFile.files = dt.files;
+			
+			reader.readAsDataURL(file);
+		};
+    
+		// 첨부된 파일이 있는 경우 button과 함께 imageZone에 추가할 div를 만들어 반환
+		var makeDiv = function(img, file) {
+			var div = document.createElement('div');
+			div.classList.add("image-box");
+      
+			var btn = document.createElement('input');
+			btn.setAttribute('type', 'button');
+			btn.setAttribute('value', 'x');
+			btn.setAttribute('delFile', file.name);
+			btn.classList.add("image-btn");
+			btn.onclick = function(ev){
+				var ele = ev.srcElement;
+				var delFile = ele.getAttribute('delFile');
+				for(var i=0 ;i<sel_files.length; i++){
+					if(delFile === sel_files[i].name){
+						sel_files.splice(i, 1);      
+					}
+				}
+        
+				var dt = new DataTransfer();
+				for(f in sel_files) {
+					var file = sel_files[f];
+					dt.items.add(file);
+				}
+				selectFile.files = dt.files;
+				
+				var p = ele.parentNode;
+				imageZone.removeChild(p);
+			};
+			div.appendChild(img);
+			div.appendChild(btn);
+			return div;
+		};
+	}
+)('image_zone', 'selectFile');
+</script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+<style type="text/css">
+
+.container {
+	width: 500px;
+	margin: 30px auto;
+	
+}
+
+.image-container {
+	display: grid;
+	grid-template-columns : repeat(3, 1fr);
+	grid-gap : 5px;
+	width: 450px;
+	margin: 10px 0;
+	
+}
+
+.image {
+	width: 150px;
+	height: 100px;
+}
+
+</style>
+
+<script type="text/javascript">
+
+function imageFilePreView(input) {
+	const $div = document.querySelector(".image-container");
+	
+	if(input.files) {
+		const arr = Array.from(input.files);
+		
+		arr.forEach((file, index) => {
+			const reader = new FileReader();
+			const $img = document.createElement("img");
+			$img.classList.add("image");
+			
+			
+			reader.onload = e => {
+				$img.src = e.target.result;
+			};
+			
+			reader.readAsDataURL(file);
+			$div.appendChild($img);
+			
+		});
+	}
+	
+}
+
+
+
+</script>
+</head>
+<body>
+
+<div class="container">
+	<form action="" name="frm">
+		<p>
+			<input type="file" name="selectFile" accept="image/*" multiple="multiple" 
+				onchange="imageFilePreView(this);">
+		</p>
+		<div class="image-container"></div>
+		<p>
+			<button type="button" onclick="sendOk()">등록하기</button>
+		</p>
+	</form>
+</div>
+
+</body>
+</html>
